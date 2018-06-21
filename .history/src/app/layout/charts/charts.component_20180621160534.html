@@ -1,0 +1,48 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Process List'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">
+                    List Of Processes
+                    <button type="button"  class="btn btn-lg btn-link">add new</button>
+                </div>
+               
+                <div class="card-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Process Id</th>
+                            <th>Process User Id</th>
+                            <th>Process Name</th>
+                            <th>Process Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>1.2</td>
+                            <td>cif search</td>
+                            <td>14h00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>2.3</td>
+                            <td>open fbss</td>
+                            <td>6h00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>3.5</td>
+                            <td>avaf application</td>
+                            <td>11h00</td>
+                        </tr>
+                        </tbody>             
+                    </table>      
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
