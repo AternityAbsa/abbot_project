@@ -1,0 +1,107 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'New Process'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <div class="card-header">
+                        Process Name: Cif Search
+                    </div>
+                    <div>
+                    <form class="form-inline my- my-lg-0">
+                            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
+                            <br><br>
+                            &nbsp; &nbsp;
+                            <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Add New</a>
+                        </form>
+                    </div>
+                   
+                    <div class="card-body table-responsive">
+                        <table class="table" >
+                            
+                            <thead>
+                            <tr>
+                                <th>Process Id</th>
+                                <th>Process Name</th>
+                                <th>Status</th>
+                                <th>Time</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>cif search</td>
+                                <td>A</td>
+                                <td>14h00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>open fbss</td>
+                                <td>A</td>                           
+                                <td>6h00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>                          
+                                <td>avaf application</td>
+                                <td>NA</td>
+                                <td>11h00</td>
+                            </tr>
+                            </tbody>             
+                        </table>      
+                    </div>
+                </div>           
+            </div>
+            <br><br>
+            &nbsp; &nbsp;
+            <div>
+                    <form class="form-inline my- my-lg-1">
+                            <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
+                            <br><br>
+                            &nbsp; &nbsp;
+                            <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Edit</button>
+                            &nbsp; &nbsp;
+                            <button class="btn btn-outline-success my-0 my-sm-0" type="submit">View</button>
+                            &nbsp; &nbsp;
+                            <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Delete</button>
+                        </form>
+                    </div>
+        </div>
+
+
+    <!--<div class="row">
+        <div class="col-lg-6">
+
+          <form role="form">
+
+                <div class="form-group">
+                    <label>Selects</label>
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+
+                <fieldset class="form-group">
+                    <label>Multiple Selects</label>
+                    <select multiple="" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </fieldset>
+
+                <button type="submit" class="btn btn-secondary">Submit Button</button>
+                <button type="reset" class="btn btn-secondary">Reset Button</button>
+
+            </form>
+        </div> 
+        
+    </div> -->
+    <!-- /.row -->
+</div>
