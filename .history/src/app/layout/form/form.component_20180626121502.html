@@ -18,9 +18,9 @@
                                 <th>Process Name</th>
                                 <th>Process Type</th>
                                 <th>Description</th>
-                                <th>User</th>
-                                <th>Created Date</th>
-
+                                <th>Timestamp</th>
+                                <th>UserId</th>
+                                <th>Username</th>
                                 
                             </tr>
                             </thead>
@@ -65,12 +65,12 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th> Property</th>
-                                    <th> Element Value</th>
-                                    <th>Process Status</th>
+                                    <th>Element Property</th>
+                                    <th>Element Value</th>
+                                    <th>Status</th>
                                     <th>Execution Order</th>
+                                    <th>UserId</th>
                                     <th>Username</th>
-                                    <th>Date</th>
                                     
                                 </tr>
                                 </thead>
@@ -96,7 +96,7 @@
                             <div>
                             <form>
                             <div class="text-right">
-                                    <a class="btn btn-outline-success my-0 my-sm-0" (click)="onSave()">Add</a>
+                                    <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Add</a>
                             </div> 
                             </form>
                             </div>          

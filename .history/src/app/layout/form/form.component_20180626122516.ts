@@ -23,8 +23,9 @@ class ProcessList {
     animations: [routerTransition()]
 })
 export class FormComponent implements OnInit {
+    // Actions
 
-    //use actionName from ProcessModel to populate list of steps from DB.
+    //use actionName from Model to populate list 
     private actions: string[] = [
         'open app',
         'enter text',
@@ -82,7 +83,7 @@ onSave(){
     // Change submitType to Update.
     this.submitType = 'Update';
     // Display registration entry section.
-    this.showNew = false;
+    this.showNew = true;
   }
 
   // This method associate to Delete Button.

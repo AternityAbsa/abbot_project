@@ -15,12 +15,14 @@ export class ProcessModel  {
     sharedObject : number;
 
     /** AbbotAction */
+
     actionId : number;
     actionName : string;
     actionDescription : string;
 
 
     /** Abbot process steps */
+
     stepId: number;
     elementTypeId: number;
     elementProperty : string;
@@ -29,9 +31,11 @@ export class ProcessModel  {
     executionOrder: number;
 
 
-    /** abbot element type */
-    elementId : number;
-    elementName : string;
+
+
+
+
+
    
 }
 

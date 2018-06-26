@@ -28,10 +28,15 @@ export class ProcessModel  {
     stepStatus : string;
     executionOrder: number;
 
-
     /** abbot element type */
+
     elementId : number;
     elementName : string;
+
+
+
+
+
    
 }
 

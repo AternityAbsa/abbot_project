@@ -111,7 +111,7 @@
                                     &nbsp; &nbsp;&nbsp;
                                     <div>
                                             <select class="form-control" (change)="updateData($event)">
-                                                    <option *ngFor="let act of actions">
+                                                    <option *ngFor="let act of actions; let i = index">
                                                         {{act}}
                                                     </option>
                                                 </select>    

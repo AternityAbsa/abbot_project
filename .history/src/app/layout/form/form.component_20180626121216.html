@@ -16,11 +16,10 @@
                                 <th>#</th>
                                 <th>Process Id</th>
                                 <th>Process Name</th>
-                                <th>Process Type</th>
-                                <th>Description</th>
-                                <th>User</th>
-                                <th>Created Date</th>
-
+                                <th>Status</th>
+                                <th>Timestamp</th>
+                                <th>UserId</th>
+                                <th>Username</th>
                                 
                             </tr>
                             </thead>
@@ -65,12 +64,12 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th> Property</th>
-                                    <th> Element Value</th>
-                                    <th>Process Status</th>
-                                    <th>Execution Order</th>
+                                    <th>elementValue</th>
+                                    <th>elementValue</th>
+                                    <th>Status</th>
+                                    <th>Timestamp</th>
+                                    <th>UserId</th>
                                     <th>Username</th>
-                                    <th>Date</th>
                                     
                                 </tr>
                                 </thead>
@@ -96,7 +95,7 @@
                             <div>
                             <form>
                             <div class="text-right">
-                                    <a class="btn btn-outline-success my-0 my-sm-0" (click)="onSave()">Add</a>
+                                    <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Add</a>
                             </div> 
                             </form>
                             </div>          

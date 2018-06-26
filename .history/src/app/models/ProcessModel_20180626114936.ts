@@ -32,6 +32,11 @@ export class ProcessModel  {
     /** abbot element type */
     elementId : number;
     elementName : string;
+
+
+
+
+
    
 }
 

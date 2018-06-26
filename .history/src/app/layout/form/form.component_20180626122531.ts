@@ -82,7 +82,7 @@ onSave(){
     // Change submitType to Update.
     this.submitType = 'Update';
     // Display registration entry section.
-    this.showNew = false;
+    this.showNew = true;
   }
 
   // This method associate to Delete Button.

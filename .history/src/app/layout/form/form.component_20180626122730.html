@@ -96,7 +96,7 @@
                             <div>
                             <form>
                             <div class="text-right">
-                                    <a class="btn btn-outline-success my-0 my-sm-0" (click)="onSave()">Add</a>
+                                    <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Add</a>
                             </div> 
                             </form>
                             </div>          
@@ -110,7 +110,7 @@
                             <form class="form-inline my- my-lg-6">
                                     &nbsp; &nbsp;&nbsp;
                                     <div>
-                                            <select class="form-control" (change)="updateData($event)">
+                                            <select class="form-control" (change)="updateData($event)" (click)="onDelete(i)">
                                                     <option *ngFor="let act of actions">
                                                         {{act}}
                                                     </option>
