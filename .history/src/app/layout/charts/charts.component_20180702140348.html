@@ -1,0 +1,75 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Process List'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">
+                    List Of Processes
+                </div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Process Id</th>
+                            <th>Process Name</th>
+                            <th>Description</th>
+                            <th>Version</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let process of process_List; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{process.processId}}</td>
+                            <td>{{process.processName}}</td>
+                            <td>{{process.description}}</td>
+                            <td>{{process.version}}</td>
+                            <td>{{process.status}}</td>
+                            <td>{{process.timestamp}}</td>
+
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</a>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Create New</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+        <br><br>
+        <!-- &nbsp; &nbsp;
+        <div>
+                <form class="form-inline my- my-lg-1">
+                        <br><br>
+                        &nbsp; &nbsp;
+                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Edit</button>
+                        &nbsp; &nbsp;
+                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit">View</button>
+                        &nbsp; &nbsp;
+                        <button class="btn btn-outline-success my-0 my-sm-0" type="submit">Delete</button>
+                    </form>
+                </div> -->
+    </div>
+</div>
+
+
+
+
+
+
+
