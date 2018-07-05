@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { AuthService} from '../services/AuthService';
 import { UserManagementService } from '../services/UserManagementService';
-import { ProcessesService } from '../services/ProcessesServices';
 import { AuthModel } from '../models/AuthModel';
 
 @Component({
@@ -35,16 +34,14 @@ export class LoginComponent implements OnInit {
 
     constructor(private router: Router,  private activatedRoute: ActivatedRoute,
          private authenticationService: AuthService,
-         private usermanagementService: UserManagementService,
-         private processServices: ProcessesService
+         private usermanagementService: UserManagementService
          ) {
         }
 
     ngOnInit(){
 
-        //this.Login();
-        //this.getAllUsers();
-        this.getAllProcesses();
+        this.Login();
+        this.getAllUsers();
         
      }
 
@@ -67,8 +64,8 @@ export class LoginComponent implements OnInit {
       );
     }
 
-    getAllProcesses(){
-      this.processServices.getAllProcesses().subscribe(
+    getAll(){
+      this.usermanagementService.getAllUsers().subscribe(
         data=>{
           this.user = data;
           console.log("User List" + data);

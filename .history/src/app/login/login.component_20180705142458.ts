@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
         //this.Login();
         //this.getAllUsers();
-        this.getAllProcesses();
+        console.log(" List Of " +  this.getAllProcesses());
         
      }
 

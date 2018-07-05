@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(){
 
-        //this.Login();
+        this.Login();
         //this.getAllUsers();
-        this.getAllProcesses();
         
      }
 

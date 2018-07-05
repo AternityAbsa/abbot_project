@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(){
 
-        //this.Login();
-        //this.getAllUsers();
-        this.getAllProcesses();
+        this.Login();
+        this.getAllUsers();
         
      }
 
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
     }
 
     getAllProcesses(){
-      this.processServices.getAllProcesses().subscribe(
+      this.processServices.getAl().subscribe(
         data=>{
           this.user = data;
           console.log("User List" + data);

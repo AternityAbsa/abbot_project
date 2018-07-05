@@ -17,12 +17,15 @@
                                 {{ e }}
                             </option>
                         </select> 
+                        <tr *ngFor="let rem of rememberMe; let idx = index">
+                                <td>{{ entry.description }}</td>
+                                <td>
+                                    <input type="radio" name="radiogroup" [checked]="idx === 0">
+                                </td>
+                            </tr>
                     </div>
                     <!-- <div class="form-group">
-                        <div>
-                        <input type="radio" class="form-control input-underline input-lg"> True
-                        <input type="radio" class="form-control input-underline input-lg"> False
-                        </div>
+                        <input type="text"  rememberMe="rememberMe" class="form-control input-underline input-lg" id="rememberMe" placeholder="RememberMe" required>
                     </div> -->
                 </div>
                 <a class="btn rounded-btn" [routerLink]="['/charts']" (click)="Login()"> Log in </a>

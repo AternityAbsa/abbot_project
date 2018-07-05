@@ -18,12 +18,12 @@
                             </option>
                         </select> 
                     </div>
-                    <!-- <div class="form-group">
-                        <div>
-                        <input type="radio" class="form-control input-underline input-lg"> True
-                        <input type="radio" class="form-control input-underline input-lg"> False
-                        </div>
-                    </div> -->
+                    <div class="form-group">
+                        <p>
+                        <input type="radio" value="true" name="gender" [ngModel]="user.gender" > True
+                        <input type="radio" value="true" name="gender" [ngModel]="user.gender" > Fa
+                        </p>
+                    </div>
                 </div>
                 <a class="btn rounded-btn" [routerLink]="['/charts']" (click)="Login()"> Log in </a>
                 &nbsp;

@@ -11,19 +11,14 @@
                     <div class="form-group">
                         <input type="password" password="password" class="form-control input-underline input-lg" id="password" placeholder="Password" required>
                     </div>
-                    <div>
-                    <select env="env" class="form-control input-underline input-lg" placeholder="Environment">
-                            <option *ngFor="let e of env">
-                                {{ e }}
-                            </option>
-                        </select> 
+                    <select name="profile" ngModel>
+                        <option *ngFor="let prf of rememberMe" [ngValue]="rememberMe">
+                            {{ prf.prName }}
+                        </option>
+                    </select> 
+                    <div class="form-group">
+                        <input type="text"  rememberMe="rememberMe" class="form-control input-underline input-lg" id="rememberMe" placeholder="RememberMe" required>
                     </div>
-                    <!-- <div class="form-group">
-                        <div>
-                        <input type="radio" class="form-control input-underline input-lg"> True
-                        <input type="radio" class="form-control input-underline input-lg"> False
-                        </div>
-                    </div> -->
                 </div>
                 <a class="btn rounded-btn" [routerLink]="['/charts']" (click)="Login()"> Log in </a>
                 &nbsp;

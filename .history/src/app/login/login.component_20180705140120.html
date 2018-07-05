@@ -12,17 +12,13 @@
                         <input type="password" password="password" class="form-control input-underline input-lg" id="password" placeholder="Password" required>
                     </div>
                     <div>
-                    <select env="env" class="form-control input-underline input-lg" placeholder="Environment">
-                            <option *ngFor="let e of env">
-                                {{ e }}
-                            </option>
-                        </select> 
-                    </div>
+                    <select name="rememberMe" ngModel>
+                        <option *ngFor="let rem of rememberMe" [ngValue]="rem">
+                            {{ rem }}
+                        </option>
+                    </select> 
                     <!-- <div class="form-group">
-                        <div>
-                        <input type="radio" class="form-control input-underline input-lg"> True
-                        <input type="radio" class="form-control input-underline input-lg"> False
-                        </div>
+                        <input type="text"  rememberMe="rememberMe" class="form-control input-underline input-lg" id="rememberMe" placeholder="RememberMe" required>
                     </div> -->
                 </div>
                 <a class="btn rounded-btn" [routerLink]="['/charts']" (click)="Login()"> Log in </a>

@@ -36,15 +36,14 @@ export class LoginComponent implements OnInit {
     constructor(private router: Router,  private activatedRoute: ActivatedRoute,
          private authenticationService: AuthService,
          private usermanagementService: UserManagementService,
-         private processServices: ProcessesService
+         private processSerices: Proce
          ) {
         }
 
     ngOnInit(){
 
-        //this.Login();
-        //this.getAllUsers();
-        this.getAllProcesses();
+        this.Login();
+        this.getAllUsers();
         
      }
 
@@ -68,7 +67,7 @@ export class LoginComponent implements OnInit {
     }
 
     getAllProcesses(){
-      this.processServices.getAllProcesses().subscribe(
+      this.pro.getAllUsers().subscribe(
         data=>{
           this.user = data;
           console.log("User List" + data);
