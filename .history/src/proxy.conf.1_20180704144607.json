@@ -1,0 +1,10 @@
+{
+  "/odata": {
+    "target": "https://",
+    "secure": true,
+    "pathRewrite": {
+    "^/odata": ""
+  },
+    "changeOrigin": true
+  }
+}

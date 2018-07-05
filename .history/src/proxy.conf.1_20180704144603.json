@@ -1,0 +1,10 @@
+{
+  "/odata": {
+    "target": "https://eu-odata.aternity.com",
+    "secure": true,
+    "pathRewrite": {
+    "^/odata": ""
+  },
+    "changeOrigin": true
+  }
+}

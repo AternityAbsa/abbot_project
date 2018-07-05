@@ -1,0 +1,10 @@
+{
+  "/odata": {
+    "target": "http://localhost:8080/swagger-ui.html#!/",
+    "secure": true,
+    "pathRewrite": {
+    "^/odata": ""
+  },
+    "changeOrigin": true
+  }
+}

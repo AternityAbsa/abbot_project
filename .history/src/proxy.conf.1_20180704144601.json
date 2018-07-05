@@ -1,0 +1,10 @@
+{
+  "/odata": {
+    "target": "local",
+    "secure": true,
+    "pathRewrite": {
+    "^/odata": ""
+  },
+    "changeOrigin": true
+  }
+}
