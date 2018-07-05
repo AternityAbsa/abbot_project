@@ -32,6 +32,7 @@ export class ProcessesService {
      */
 
      public getAllProcesses(): Observable<any[]>{
+        this.headers.append("X-Total-Count", "500");
         return this.http.get(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API,{ headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
