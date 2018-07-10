@@ -10,11 +10,12 @@ export class ProcessModel  {
     lastModifiedDate : Date;
     name : string;
     processStatus : string;
-    runmode : string;
+    
+    version : string;
+   
+    createdBy : string;
+   x
     sharedObject : number;
-    version : number;
-    createdUserId : number;
-    lastMOdifiedByUserId : number;
     Value: string;
 
     /** Abbot Action */

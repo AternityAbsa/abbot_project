@@ -51,8 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
                 ProcessesService, ProcessModel,
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard,
-                UserManagementModel, UserManagementService, ProcessStepControllerService,
-                NgbModule
+                UserManagementModel, UserManagementService, ProcessStepControllerService 
                 ],
     bootstrap: [AppComponent]
 })

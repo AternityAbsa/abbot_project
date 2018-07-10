@@ -7,14 +7,14 @@ export class ProcessModel  {
     processType : string;
     createdate: Date;
     description : string;
-    lastModifiedDate : Date;
     name : string;
     processStatus : string;
-    runmode : string;
+    
+    version : string;
+   
+    createdBy : string;
+    runmode : number;
     sharedObject : number;
-    version : number;
-    createdUserId : number;
-    lastMOdifiedByUserId : number;
     Value: string;
 
     /** Abbot Action */

@@ -97,12 +97,8 @@ export class ChartsComponent implements OnInit {
   }
 
   createNewProcess(content){
-   // Opens The Modal Form to add new Process
+   // this.router.navigate(['/add-process-form']);
    this.modalService.open(content, { size: 'lg' });
-  }
-
-  onAddNewProcess(){
-    
   }
 
   updateProcess(process){

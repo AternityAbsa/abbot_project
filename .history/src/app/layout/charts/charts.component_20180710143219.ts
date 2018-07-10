@@ -14,8 +14,7 @@ class ProcessList {
     Value: string;   
     constructor(  public processId: string = '', public name: string = '', public description: string = '', 
     public version: string = '', public status: string = null, public runmode: number = 0, Value: string,
-           public sharedObject: number = 0, public createdBy : string ='', public processType: string=''
-          ) 
+           public sharedObject: number=0, public createdBy : string ='', public processType: string='') 
     {
         this.Value = Value;
         this.processId = processId;
@@ -29,24 +28,12 @@ class ProcessList {
 
     }
   }
+
 @Component({
     selector: 'app-charts',
     templateUrl: './charts.component.html',
     styleUrls: ['./charts.component.scss'],
-    animations: [routerTransition()],
-    encapsulation: ViewEncapsulation.None,
-    styles: [`
-      .dark-modal .modal-content {
-        background-color: #292b2c;
-        color: white;
-      }
-      .dark-modal .close {
-        color: white;
-      }
-      .light-blue-backdrop {
-        background-color: #5cb3fd;
-      }
-    `],
+    animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
 
@@ -68,24 +55,8 @@ export class ChartsComponent implements OnInit {
     private process : any[];
 
 
-    constructor(private processService : ProcessesService, private processModel : ProcessModel,
-       private router : Router, private modalService: NgbModal) {
+    constructor(private processService : ProcessesService, private processModel : ProcessModel, private router : Router) {
         }
-
-        private actions: string[] = [
-          'Action 1',
-          'Action 2',
-          'Action 3',
-          'Action 4'
-         ];
-
-         private element_types: string[] = [
-          'Element 1',
-          'Element 2',
-          'Element 3',
-          'Element 4'
-         ];
-      
 
   getAllProcesses(){
 
@@ -96,13 +67,8 @@ export class ChartsComponent implements OnInit {
   getProcess(index: number){
   }
 
-  createNewProcess(content){
-   // Opens The Modal Form to add new Process
-   this.modalService.open(content, { size: 'lg' });
-  }
-
-  onAddNewProcess(){
-    
+  createNewProcess(){
+    this.router.navigate(['/add-process-form']);
   }
 
   updateProcess(process){
@@ -120,10 +86,6 @@ export class ChartsComponent implements OnInit {
   deleteProcess(process){
     this.processService.deleteProcess(process).subscribe(
         data => this.process_Model.splice(this.process_Model.indexOf(process), 1));
-    }
-
-    openLg(content) {
-      this.modalService.open(content, { size: 'lg' });
     }
 
   onCancel() {

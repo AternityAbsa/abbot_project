@@ -14,8 +14,7 @@ class ProcessList {
     Value: string;   
     constructor(  public processId: string = '', public name: string = '', public description: string = '', 
     public version: string = '', public status: string = null, public runmode: number = 0, Value: string,
-           public sharedObject: number = 0, public createdBy : string ='', public processType: string=''
-          ) 
+           public sharedObject: number=0, public createdBy : string ='', public processType: string='') 
     {
         this.Value = Value;
         this.processId = processId;
@@ -79,11 +78,11 @@ export class ChartsComponent implements OnInit {
           'Action 4'
          ];
 
-         private element_types: string[] = [
-          'Element 1',
-          'Element 2',
-          'Element 3',
-          'Element 4'
+         private e;le: string[] = [
+          'Action 1',
+          'Action 2',
+          'Action 3',
+          'Action 4'
          ];
       
 
@@ -97,12 +96,8 @@ export class ChartsComponent implements OnInit {
   }
 
   createNewProcess(content){
-   // Opens The Modal Form to add new Process
+   // this.router.navigate(['/add-process-form']);
    this.modalService.open(content, { size: 'lg' });
-  }
-
-  onAddNewProcess(){
-    
   }
 
   updateProcess(process){

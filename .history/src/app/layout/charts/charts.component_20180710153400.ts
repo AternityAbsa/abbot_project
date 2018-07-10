@@ -101,9 +101,7 @@ export class ChartsComponent implements OnInit {
    this.modalService.open(content, { size: 'lg' });
   }
 
-  onAddNewProcess(){
-    
-  }
+  onAddNewProcess
 
   updateProcess(process){
     this.processService.updateProcess(process).subscribe(

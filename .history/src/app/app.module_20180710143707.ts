@@ -36,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        NgbModule.forRoot(),
+        NgbModule.for,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -51,8 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
                 ProcessesService, ProcessModel,
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard,
-                UserManagementModel, UserManagementService, ProcessStepControllerService,
-                NgbModule
+                UserManagementModel, UserManagementService, ProcessStepControllerService 
                 ],
     bootstrap: [AppComponent]
 })

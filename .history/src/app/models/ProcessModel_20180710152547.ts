@@ -15,6 +15,8 @@ export class ProcessModel  {
     version : number;
     createdUserId : number;
     lastMOdifiedByUserId : number;
+    
+    
     Value: string;
 
     /** Abbot Action */

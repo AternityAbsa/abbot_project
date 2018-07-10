@@ -14,7 +14,8 @@ export class ProcessModel  {
     sharedObject : number;
     version : number;
     createdUserId : number;
-    lastMOdifiedByUserId : number;
+    
+    
     Value: string;
 
     /** Abbot Action */

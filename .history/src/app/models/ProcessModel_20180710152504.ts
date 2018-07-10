@@ -12,9 +12,11 @@ export class ProcessModel  {
     processStatus : string;
     runmode : string;
     sharedObject : number;
-    version : number;
-    createdUserId : number;
-    lastMOdifiedByUserId : number;
+    version : string;
+   
+    createdBy : string;
+    
+    
     Value: string;
 
     /** Abbot Action */

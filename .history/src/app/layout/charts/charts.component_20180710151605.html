@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group">
                             <label for="created-date" class="col-form-label">Created Date:</label>
-                            <input type="datetime" class="form-control" id="created-date">
+                            <input type="text" class="form-control" id="created-date">
                     </div>
                     <div class="form-group">
                             <label for="description" class="col-form-label">Description:</label>
@@ -85,28 +85,15 @@
                     </div>
                     <div class="form-group">
                             <label for="modified-date" class="col-form-label">Last Modified Date:</label>
-                            <input type="datetime" class="form-control" id="modified-date">
+                            <input type="text" class="form-control" id="modified-date">
                     </div>
                     <div class="form-group">
                         <label for="run-mode" class="col-form-label">Run Mode:</label>
-                        <input type="text" class="form-control" id="run-mode">
+                        <input type="text" class="form-control" id="name">
                     </div>
-                    <div class="form-group">
-                        <label for="shared-object" class="col-form-label">shared Object:</label>
-                        <input type="number" class="form-control" id="shared-object">
-                    </div>
-                    <div class="form-group">
-                        <label for="version" class="col-form-label">Version:</label>
-                        <input type="number" class="form-control" id="version">
-                    </div>
-                    <div class="form-group">
-                        <label for="created-by" class="col-form-label">Created By Id:</label>
-                        <input type="number" class="form-control" id="created-by">
-                    </div>
-                    <div class="form-group">
-                        <label for="last-modified" class="col-form-label">Last Modified By Id:</label>
-                        <input type="number" class="form-control" id="last-modified">
-                    </div>
+
+                    
+
                     <div class="form-group">
                             <label for="actions" class="col-form-label">Actions:</label>
                             <select  class="form-control input-underline input-lg">
@@ -115,6 +102,7 @@
                                </option>
                             </select>
                      </div> 
+
                      <div class="form-group">
                         <label for="element-types" class="col-form-label">Element Type:</label>
                         <select  class="form-control input-underline input-lg">
@@ -127,9 +115,10 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="onAddNewProcess()">Add</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="c('Add Process')">Add</button>
             </div>
           </ng-template>
+        
     </div>
 </div>
 
