@@ -1,52 +1,57 @@
+<div class="not-found" [@routerTransition]>
+    <div class="row justify-content-md-center">
+                <div class="card-header">
+                    <h1>User List</h1>
+                </div>
 
-<form class="form-inline my- my-lg-6"> 
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>Last Modified Date</th>
+                            <th>alert Event Types</th>
+                            <th>Alert Notification Types</th>
+                            <th>UserName</th>
+                            <th>Abbot User Role Id</th>
+                            <th>Valid From Date</th>
+                            <th>Valid To Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let process of process_Model; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{process.processId}}</td>
+                            <td>{{process.name}}</td>
+                            <td>{{process.description}}</td>
+                            <td>{{process.version}}</td>
+                            <td>{{process.runmode}}</td>
+                            <td>{{process.sharedObject}}</td>
+                            <td>{{process.processType}}</td>
+                            <td>{{process.createdBy}}</td>
 
-    <fieldset formGroupName="name">  
-      <div class="form-group">
-        <label>First Name</label>
-        <input type="text"
-               class="form-control"
-               formControlName="firstName" 
-               required>
-      </div>
-  
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text"
-               class="form-control"
-               formControlName="lastName" 
-               required>
-      </div>
-    </fieldset>
-  
-  
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email"
-             class="form-control"
-             formControlName="email" 
-             required>
-    </div>
-  
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password"
-             class="form-control"
-             formControlName="password" 
-             required>
-    </div>
-  
-    <div class="form-group">
-      <label>Language</label>
-      <select class="form-control"
-              formControlName="language">
-        <option value="">Please select a language</option>
-        <option *ngFor="let lang of langs"
-                [value]="lang">{{lang}}
-        </option>
-      </select>
-    </div>
-  
-    <pre>{{myform.value | json}}</pre>
-  </form>
-  
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editProcess(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+

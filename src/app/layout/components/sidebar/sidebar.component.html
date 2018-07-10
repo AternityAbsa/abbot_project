@@ -10,6 +10,9 @@
         <a [routerLink]="['/queue']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Queue Manager' | translate }}
         </a>
+        <a [routerLink]="['/app-user']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ ' User Management' | translate }}
+        </a>
         <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Control Room' | translate }}
         </a>
@@ -17,7 +20,7 @@
             <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Credentials Manager' | translate }}
         </a>
         <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'User Management' | translate }}
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Process Form' | translate }}
         </a>
         <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Manage Actions' | translate }}

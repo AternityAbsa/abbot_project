@@ -5,12 +5,12 @@ export class ProcessModel  {
     /** Abbot Process */
     processId : string;
     processType : string;
-    processName : string;
+    name : string;
     processStatus : string;
     description : string;
     version : string;
     createdate: Date;
-    createby : string;
+    createdBy : string;
     runmode : number;
     sharedObject : number;
     Value: string;

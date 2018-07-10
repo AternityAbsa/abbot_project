@@ -18,7 +18,9 @@ const routes: Routes = [
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
-            { path: 'add-process-form', loadChildren: './add-process-form/add-process-form.module#AddProcessFormModule' }
+            { path: 'add-process-form', loadChildren: './add-process-form/add-process-form.module#AddProcessFormModule' },
+            { path: 'app-user', loadChildren: './user/user.module#UserModule' },
+            { path: 'app-add-user-form', loadChildren: './add-user-form/add-user-form.module#AddUserFormModule' }
         ]
     }
 ];

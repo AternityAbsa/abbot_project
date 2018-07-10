@@ -6,7 +6,7 @@ import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/Rx';
 import { ProcessModel } from '../models/models';
-import{ AuthService } from '../services/AuthService';
+import { AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_PROCESS_MANAGEMENT_API } from '../services/services';
 
 
@@ -15,7 +15,6 @@ export class ProcessesService {
 
     public processes: Array<ProcessModel>;
     private process: ProcessModel;
-
     public applications: Array<ProcessModel>;
     private headers = new Headers({
         'Content-Type': 'application/json',
@@ -31,8 +30,8 @@ export class ProcessesService {
      * @param body AbBot Processes to add
      */
 
-     public getAllProcesses(): Observable<any[]>{
-        this.headers.append("X-Total-Count", "500");
+     public getAllProcesses(){
+      //  this.headers.append("X-Total-Count", "500");
         return this.http.get(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API,{ headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -77,7 +76,7 @@ export class ProcessesService {
      }
 
      updateProcess(process: ProcessModel){
-        return this.http.put(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API, JSON.stringify(process), { headers: this.headers})
+        return this.http.put(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + process.processId, JSON.stringify(process), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -91,8 +90,8 @@ export class ProcessesService {
         .catch(this.handleError);
      }
 
-     deleteProcess(id:number){
-        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + id, { headers: this.headers})
+     deleteProcess(process: ProcessModel){
+        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + process.processId, { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

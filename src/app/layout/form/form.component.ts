@@ -51,6 +51,16 @@ export class FormComponent implements OnInit {
         this.process_List.push(new ProcessList('1', 'cif search', 'A', '14h00', 'abmg101', 'test01'));
         }
 
+        getAllProcesses(){
+          this.processService.getAllProcesses().subscribe(
+            data=>{
+              this.processModel = data;
+              console.log("User List" + data);
+            }
+          );
+
+        }
+
 onNew(){
     this.process_Model = new ProcessList();
     this.submitType = 'Save';
