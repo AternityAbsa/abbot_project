@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { Router, NavigationEnd } from '@angular/router';
-import {ProcessesService} from '../../services/ProcessesServices';
+import { ProcessesService } from '../../services/ProcessesServices';
 import 'rxjs/add/operator/map';
 import { ProcessModel } from '../../models/ProcessModel';
-import { Observable } from 'rxjs/Observable'; 
+import { Observable } from 'rxjs/Observable';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 class ProcessList {
-    Value: string;   
-    constructor(public processId: string = '', public processName: string = '', public description: string = '', 
-    public version: string = '', public status: string = null,public timestamp: string = '', Value: string) 
+    Value: string;
+    constructor(public processId: string = '', public processName: string = '', public description: string = '',
+    public version: string = '', public status: string = null,public timestamp: string = '', Value: string)
     {
         this.Value = Value;
         this.processId = processId;
@@ -30,15 +30,15 @@ class ProcessList {
     animations: [routerTransition()]
 })
 export class ChartsComponent implements OnInit {
- 
-    Value: string;  
-    updatedItem;  
-    newItem: any = {};   
+
+    Value: string;
+    updatedItem;
+    newItem: any = {};
     editIndex = null;
     rowDetails:Array<object>;
     editRow : boolean;
     updateIndex : number;
-    process_List: ProcessList[] = new Array(); 
+    process_List: ProcessList[] = new Array();
     process_Model: ProcessList;
     showNew: Boolean = false;
     // It will be either 'Save' or 'Update' based on operation.
@@ -84,13 +84,13 @@ this.processService.setter(i);
 
 onEdit(i: number){
     this.newItem.Value = this.process_List[i].Value;
-    this.updatedItem = i;  
+    this.updatedItem = i;
     this.showNew = true;
 }
 
  UpdateItem() {
 
-    let data = this.updatedItem;  
+    let data = this.updatedItem;
 
     for(let i = 0; i < this.process_List.length; i++){
             if(i == data){
@@ -126,7 +126,7 @@ onEdit(i: number){
   }
 
   getProcess(id:Number){
-      
+
 
 }
 
@@ -155,13 +155,13 @@ onEdit(i: number){
 loadProcesses(){
     this.processService.getAllProcesses().subscribe(
         processes => {
-        this.processModel.processId = processes['value'].map(processes => processes.processId);
-        this.processModel.processName = processes['value'].map(processes => processes.processName);
-        this.processModel.description = processes['value'].map(processes => processes.description);
-        this.processModel.version = processes['value'].map(processes => processes.version);
-        this.processModel.processStatus = processes['value'].map(processes => processes.processStatus);
-        this.process = processes;
-    
+       // this.processModel.processId = processes['value'].map(processes => processes.processId);
+       // this.processModel.processName = processes['value'].map(processes => processes.processName);
+        //this.processModel.description = processes['value'].map(processes => processes.description);
+       // this.processModel.version = processes['value'].map(processes => processes.version);
+        //this.processModel.processStatus = processes['value'].map(processes => processes.processStatus);
+        //this.process = processes;
+
     },
 );
 err => {

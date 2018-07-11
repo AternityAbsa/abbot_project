@@ -1,0 +1,30 @@
+
+<app-page-header [heading]="'Control Room'" [icon]="'fa-table'"></app-page-header>
+<div class="row">
+    <div class="col col-xl-12 col-lg-12">
+        <div class="card mb-12">
+            <div class="card-header">
+                Resource Groups
+            </div>
+
+            <div class="card-body table-responsive">
+                <p-tabView orientation="left">
+                    <p-tabPanel *ngFor="let resourceGroup of resourceGroups" header="{{resourceGroup.name}}"></p-tabPanel>
+                </p-tabView>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

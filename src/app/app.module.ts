@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { TabViewModule } from 'primeng/tabview';
+import { MenuItem } from 'primeng/api';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,10 +22,10 @@ import { QueueModel } from './models/QueueModel';
 import { QueueService } from './services/QueueService';
 import { UserManagementModel} from './models/UserManagementModel';
 import { UserManagementService } from './services/UserManagementService';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProcessStepControllerService} from './services/ProcessStepControllerService';
 import { ActionManagementService } from './services/ActionManagementService';
-
+import { ResourceGroupModel } from './models/ResourceGroupModel';
+import { ControlRoomService } from './services/ControlRoomService';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -37,9 +40,10 @@ export function createTranslateLoader(http: HttpClient) {
         HttpModule,
         CommonModule,
         BrowserModule,
+        TabViewModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        NgbModule,
+        NgbModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -50,11 +54,12 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
-    providers:  [ 
+    providers:  [
                 ProcessesService, ProcessModel,
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard,
-                UserManagementModel, UserManagementService, ProcessStepControllerService
+                UserManagementModel, UserManagementService,
+                ProcessStepControllerService, ResourceGroupModel,ControlRoomService
                 ],
     bootstrap: [AppComponent]
 })

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BlankPageComponent } from './add';
+import { ControlRoomComponent } from './control-room.component';
+
 
 const routes: Routes = [
     {
         path: '',
-        component: BlankPageComponent
+        component: ControlRoomComponent
     }
 ];
 
@@ -13,4 +14,7 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BlankPageRoutingModule {}
+
+export class ControlRoomRoutingModule {
+
+}

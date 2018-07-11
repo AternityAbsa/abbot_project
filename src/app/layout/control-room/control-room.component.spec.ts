@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddProcessFormComponent } from './add-process-form.component';
+import { ControlRoomComponent } from './control-room.component';
 
-describe('AddProcessFormComponent', () => {
-  let component: AddProcessFormComponent;
-  let fixture: ComponentFixture<AddProcessFormComponent>;
+describe('ControlRoomComponent', () => {
+  let component: ControlRoomComponent;
+  let fixture: ComponentFixture<ControlRoomComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddProcessFormComponent ]
+      declarations: [ ControlRoomComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddProcessFormComponent);
+    fixture = TestBed.createComponent(ControlRoomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

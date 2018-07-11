@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 export class AuthService {
 
 
-  private authUrl = "/odata/abbot/authenticate"; 
+  private authUrl = "/abbot/authenticate";
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
