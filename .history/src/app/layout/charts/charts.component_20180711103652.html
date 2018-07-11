@@ -1,0 +1,141 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Process List'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-12">
+                <div class="card-header">
+                    List Of Processes
+                </div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Process Id</th>
+                            <th>Process Name</th>
+                            <th>Description</th>
+                            <th>Version</th>
+                            <th>Run Mode</th>
+                            <th>Shared Object</th>
+                            <th>Process Type</th>
+                            <th>Created Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let process of process_Model; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{process.processId}}</td>
+                            <td>{{process.name}}</td>
+                            <td>{{process.description}}</td>
+                            <td>{{process.version}}</td>
+                            <td>{{process.runmode}}</td>
+                            <td>{{process.sharedObject}}</td>
+                            <td>{{process.processType}}</td>
+                            <td>{{process.createdBy}}</td>
+
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="updateProcess(process)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="deleteProcess(process.processId)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" (click)="createNewProcess(content)">Create New Process</a>
+                        </div>  
+                        </form>
+                    </div>                    
+                </div>  
+            </div>           
+        </div>
+        <br><br>
+
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title">Add New Process</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <p>One fine body&hellip;</p> -->
+              <form [formGroup]="processForm" novalidate>
+                    <div class="form-group">
+                      <label for="process-type" class="col-form-label">Process Type:</label>
+                      <input type="text" class="form-control" formControlName="process-type">
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" formControlName="name">
+                    </div>
+                    <div class="form-group">
+                            <label for="created-date" class="col-form-label">Created Date:</label>
+                            <input type="datetime" class="form-control" formControlName="created-date">
+                    </div>
+                    <div class="form-group">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <input type="text" class="form-control" formControlName="description">
+                    </div>
+                    <div class="form-group">
+                            <label for="modified-date" class="col-form-label">Last Modified Date:</label>
+                            <input type="datetime" class="form-control" formControlName="modified-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="run-mode" class="col-form-label">Run Mode:</label>
+                        <input type="text" class="form-control" formControlName="run-mode">
+                    </div>
+                    <div class="form-group">
+                        <label for="shared-object" class="col-form-label">shared Object:</label>
+                        <input type="number" class="form-control" id="shared-object">
+                    </div>
+                    <div class="form-group">
+                        <label for="version" class="col-form-label">Version:</label>
+                        <input type="number" class="form-control" id="version">
+                    </div>
+                    <div class="form-group">
+                        <label for="created-by" class="col-form-label">Created By Id:</label>
+                        <input type="number" class="form-control" id="created-by">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-modified" class="col-form-label">Last Modified By Id:</label>
+                        <input type="number" class="form-control" id="last-modified">
+                    </div>
+                    <div class="form-group">
+                            <label for="actions" class="col-form-label">Actions:</label>
+                            <select  class="form-control input-underline input-lg">
+                               <option *ngFor="let action of actions">
+                                   {{ action }}
+                               </option>
+                            </select>
+                     </div> 
+                     <div class="form-group">
+                        <label for="element-types" class="col-form-label">Element Type:</label>
+                        <select  class="form-control input-underline input-lg">
+                           <option *ngFor="let element of element_types">
+                               {{ element }}
+                           </option>
+                        </select>
+                 </div> 
+             </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="onAddNewProcess()">Add</button>
+            </div>
+          </ng-template>
+    </div>
+</div>
+
+
+
+
+
+
+
