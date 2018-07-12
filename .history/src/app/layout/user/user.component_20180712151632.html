@@ -1,0 +1,65 @@
+<div>
+    <app-page-header [heading]="'User Management'"></app-page-header>
+    <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <div class="card-header">
+                           User List
+                    </div>
+                    <div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>Last Modified Date</th>
+                            <th>User Role</th>
+                            <th>User </th>
+                            <th>Password Duration Weeks</th>
+                            <th>Alert Notification Types</th>
+                            <th>UserName</th>
+
+                            <th>Abbot User Role Id</th>
+                            <th>Valid From Date</th>
+                            <th>Valid To Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let user of userList; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{user.processId}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.description}}</td>
+                            <td>{{user.version}}</td>
+                            <td>{{user.runmode}}</td>
+                            <td>{{user.sharedObject}}</td>
+                            <td>{{user.processType}}</td>
+                            <td>{{user.createdBy}}</td>
+
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editProcess(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                            
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/app-add-user-form']">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+

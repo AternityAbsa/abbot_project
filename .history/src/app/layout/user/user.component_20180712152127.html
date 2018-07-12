@@ -1,0 +1,59 @@
+<div>
+    <app-page-header [heading]="'User Management'"></app-page-header>
+    <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <div class="card-header">
+                           User List
+                    </div>
+                    <div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>User Role</th>
+                            <th>User Department</th>
+                            <th>Password Duration Weeks</th>
+                            <th>System Username</th>
+                            <th>UserName</th>
+                            <th>Login Attemps</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let user of userList; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{user.userId}}</td>
+                            <td>{{user.createdBy}}</td>
+                            <td>{{user.lastMOdifiedBy}}</td>
+                            <td>{{user.userRole}}</td>
+                            <td>{{user.department}}</td>
+                            <td>{{user.passwordDuration}}</td>
+                            <td>{{user.systemUsername}}</td>
+                            <td>{{user.LoginAttemps}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editUser(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                            
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" (click)="createNewUser()">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+

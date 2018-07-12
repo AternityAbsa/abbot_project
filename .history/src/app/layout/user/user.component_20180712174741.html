@@ -1,0 +1,93 @@
+<div [@routerTransition]>
+        <app-page-header [heading]="'User Management'" [icon]="'fa-table'"></app-page-header>
+        <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <div class="card-header">
+                        User List
+                    </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>Username</th>
+                            <th>System Username</th>
+                            <th>Login Attemps</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let user of userList; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{user.userId}}</td>
+                            <td>{{user.createdBy}}</td>
+                            <td>{{user.lastModifiedBy}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.systemUsername}}</td>
+                            <td>{{user.loginAttemps}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editUser(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" (click)="createNewUser(content)">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+    </div> 
+</div>
+    <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title">Create New User</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                    <div class="form-group">
+                      <label for="processType" class="col-form-label">Process Type:</label>
+                      <input type="text" class="form-control" formControlName="processType" #processType>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" formControlName="name" #name>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="runmode" class="col-form-label">Run Mode:</label>
+                        <input type=" number" class="form-control" formControlName="runmode" #runmode>
+                    </div>
+                    <div class="form-group">
+                        <label for="sharedObject" class="col-form-label">shared Object:</label>
+                        <input type="number" class="form-control" formControlName="sharedObject" #sharedObject>
+                    </div>
+                    <div class="form-group">
+                        <label for="version" class="col-form-label">Version:</label>
+                        <input type="text" class="form-control" formControlNamed="version" #version>
+                    </div>
+                    
+             </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="saveProcess(processType.value, name.value, runmode.value, sharedObject.value, version.value)">Save Process</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="addProcessSteps(content1)">Add </button>
+            </div>
+          </ng-template>
+
+

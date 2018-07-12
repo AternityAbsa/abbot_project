@@ -1,0 +1,92 @@
+<div [@routerTransition]>
+        <app-page-header [heading]="'User Management'" [icon]="'fa-table'"></app-page-header>
+        <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <div class="card-header">
+                        User List
+                    </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>Username</th>
+                            <th>System Username</th>
+                            <th>Login Attemps</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let user of userList; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{user.userId}}</td>
+                            <td>{{user.createdBy}}</td>
+                            <td>{{user.lastModifiedBy}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.systemUsername}}</td>
+                            <td>{{user.loginAttemps}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editUser(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" (click)="createNewUser(content)">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+    </div> 
+</div>
+    <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title">Create New User</h4>
+              <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                    <div class="form-group">
+                      <label for="username" class="col-form-label">Username:</label>
+                      <input type="text" class="form-control" formControlName="username" #username>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRoleIde" class="col-form-label">User Role Id:</label>
+                        <input type="number" class="form-control" formControlName="userRoleIde" #userRoleIde>
+                    </div>
+                
+                    <!-- <div class="form-group">
+                        <label for="createdDate" class="col-form-label">Created Date:</label>
+                        <input type=" number" class="form-control" formControlName="createdDate" #createdDate>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="systemUsername" class="col-form-label">System :</label>
+                        <input type="text" class="form-control" formControlName="systemUsername" #sharedObject>
+                    </div>
+                    <div class="form-group">
+                        <label for="departmentId" class="col-form-label">Department Id:</label>
+                        <input type="number" class="form-control" formControlNamed="departmentId" #departmentId>
+                    </div>
+                    
+             </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="AddUser(username.value, userRoleId.value,systemUsername.value, departmentId.value)">Add User</button>
+            </div>
+          </ng-template>
+
+
