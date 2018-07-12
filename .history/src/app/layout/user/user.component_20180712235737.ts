@@ -109,7 +109,7 @@ export class UserComponent implements OnInit {
     );
   }
 
-  editUser(content1){
+  editProcess(content1){
     // Opens The Modal Form to Edit Processes
     this.modalService.open(content1, { size: 'lg' });
    }

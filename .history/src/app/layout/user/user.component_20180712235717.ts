@@ -97,7 +97,7 @@ export class UserComponent implements OnInit {
     );
   }
 
-  saveUser(username, userRoleId,systemUsername, departmentId){
+  updateUser(username, userRoleId,systemUsername, departmentId){
     this.userModel.username = username;
     this.userModel.userRoleId = userRoleId;
     this.userModel.systemUsername = systemUsername;
@@ -109,7 +109,7 @@ export class UserComponent implements OnInit {
     );
   }
 
-  editUser(content1){
+  editProcess(content1){
     // Opens The Modal Form to Edit Processes
     this.modalService.open(content1, { size: 'lg' });
    }

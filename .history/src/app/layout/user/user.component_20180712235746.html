@@ -29,11 +29,11 @@
                             <td>{{user.systemUsername}}</td>
                             <td>{{user.loginAttemps}}</td>
                             <td>
-                                <button type="button" class="btn btn-info" (click)="editUser(content1)">Edit</button>
+                                <button type="button" class="btn btn-info" (click)="editUser(i)">Edit</button>
                             
                             </td>
                             <td>
-                            <button type="button" class="btn btn-danger" (click)="onDelete(user)">Delete</button>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
                             </td>
                         </tr>
                         </tbody>             
@@ -81,14 +81,14 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="saveUser(username.value, userRoleId.value,systemUsername.value, departmentId.value)">Save User</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="AddUser(username.value, userRoleId.value,systemUsername.value, departmentId.value)">Add User</button>
             </div>
           </ng-template>
           <br><br>
 
           <ng-template #content1 let-c="close" let-d="dismiss">
             <div class="modal-header">
-              <h4 class="modal-title">Update User</h4>
+              <h4 class="modal-title">Create New User</h4>
               <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -117,7 +117,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="editUser(username.value, userRoleId.value,systemUsername.value, departmentId.value)"> Update</button>
+              <button type="button" class="btn btn-outline-success my-0 my-sm-0" (click)="saveUser(username.value, userRoleId.value,systemUsername.value, departmentId.value)"> Update User</button>
             </div>
           </ng-template>
 

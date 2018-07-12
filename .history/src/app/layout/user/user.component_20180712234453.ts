@@ -97,33 +97,14 @@ export class UserComponent implements OnInit {
     );
   }
 
-  saveUser(username, userRoleId,systemUsername, departmentId){
-    this.userModel.username = username;
-    this.userModel.userRoleId = userRoleId;
-    this.userModel.systemUsername = systemUsername;
-    this.userModel.departmentId = departmentId
-    this.userService.updateUser(this.userModel).subscribe(
+  updateUser(){
+    this.userService.updateU(this.userModel).subscribe(
       data =>{
         this.getAllUsers();
     }
     );
+
   }
 
-  editUser(content1){
-    // Opens The Modal Form to Edit Processes
-    this.modalService.open(content1, { size: 'lg' });
-   }
-
-    deleteUser(userId){
-      this.userService.deleteUser(userId).subscribe(
-        data => { 
-         alert('User successfully Deleted');
-         this.getAllUsers();
-      }, error => {
-        console.log('FAILED to Delete User');
-      },() =>{
-        this.getAllUsers();
-      });
-    }
 }
 

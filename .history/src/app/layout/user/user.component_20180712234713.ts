@@ -97,11 +97,7 @@ export class UserComponent implements OnInit {
     );
   }
 
-  saveUser(username, userRoleId,systemUsername, departmentId){
-    this.userModel.username = username;
-    this.userModel.userRoleId = userRoleId;
-    this.userModel.systemUsername = systemUsername;
-    this.userModel.departmentId = departmentId
+  updateUser(){
     this.userService.updateUser(this.userModel).subscribe(
       data =>{
         this.getAllUsers();
@@ -109,21 +105,19 @@ export class UserComponent implements OnInit {
     );
   }
 
-  editUser(content1){
-    // Opens The Modal Form to Edit Processes
-    this.modalService.open(content1, { size: 'lg' });
-   }
-
     deleteUser(userId){
-      this.userService.deleteUser(userId).subscribe(
+      this.userService.deleteUser(processId).subscribe(
         data => { 
-         alert('User successfully Deleted');
-         this.getAllUsers();
+         alert('Process successfully Deleted');
+         this.getAllProcesses();
       }, error => {
-        console.log('FAILED to Delete User');
+        //console.log('FAILED to Delete Process');
       },() =>{
-        this.getAllUsers();
+        this.getAllProcesses();
       });
+
     }
+
+
 }
 

@@ -63,8 +63,8 @@ export class UserManagementService {
         });  
      }
 
-     updateUser(user: UserManagementModel){
-        return this.http.put(BASE_PATH + ABBOT_USER_MANAGEMENT_API, JSON.stringify(user), { headers: this.headers})
+     updateProcess(user: UserManagementModel){
+        return this.http.put(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API, JSON.stringify(user), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -78,7 +78,7 @@ export class UserManagementService {
         .catch(this.handleError);
      }
 
-     deleteUser(userId: number){
+     deleteProcess(userId: number){
          console.log(userId);
         return this.http.delete(BASE_PATH + ABBOT_USER_MANAGEMENT_API + userId, { headers: this.headers})
         .map((response: Response) => {

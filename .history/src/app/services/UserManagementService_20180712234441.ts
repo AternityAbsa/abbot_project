@@ -78,7 +78,7 @@ export class UserManagementService {
         .catch(this.handleError);
      }
 
-     deleteUser(userId: number){
+     deleteProcess(userId: number){
          console.log(userId);
         return this.http.delete(BASE_PATH + ABBOT_USER_MANAGEMENT_API + userId, { headers: this.headers})
         .map((response: Response) => {
