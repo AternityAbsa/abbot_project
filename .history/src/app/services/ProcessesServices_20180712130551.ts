@@ -89,7 +89,7 @@ export class ProcessesService {
         .catch(this.handleError);
      }
 
-     deleteProcess(processId: number){
+     deleteProcess(processId){
          console.log(processId);
         return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + processId, { headers: this.headers})
         .map((response: Response) => {

@@ -172,24 +172,20 @@ export class ChartsComponent implements OnInit {
         data =>{
             //Refresh List
             this.getAllProcesses();
-         },
-        error => {
-              console.error("Error Updating Process");
-              },
-        () =>{
-          alert('Update Process - now completed.');
+         }() =>{
+          alert('Create Process - now completed.');
           this.getAllProcesses();
         });
+        error => {
+              console.error("Error Updating Process");
+              }
+    );
   }
-  deleteProcess(index, processId){
-    this.processService.deleteProcess(processId).subscribe(
-        data => { 
-         alert('Process successfully Deleted');
-      }, error => {
-        //console.log('FAILED to Delete Process');
-      },() =>{
-        this.getAllProcesses();
-      });
+  deleteProcess(index, process){
+    this.processService.deleteProcess(process.processId).subscribe(
+        data => {this.process_Model.indexOf(index, 1);
+    },
+   );
    }
 
   onCancel() {

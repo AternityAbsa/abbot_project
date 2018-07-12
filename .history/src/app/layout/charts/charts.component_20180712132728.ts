@@ -184,10 +184,11 @@ export class ChartsComponent implements OnInit {
   deleteProcess(index, processId){
     this.processService.deleteProcess(processId).subscribe(
         data => { 
-         alert('Process successfully Deleted');
+         alert('deleted a Process successfully');
       }, error => {
-        //console.log('FAILED to Delete Process');
+        console.log('FAILED to create Process');
       },() =>{
+        alert('Create Process - now completed.');
         this.getAllProcesses();
       });
    }

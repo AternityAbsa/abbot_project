@@ -91,7 +91,7 @@ export class ProcessesService {
 
      deleteProcess(processId: number){
          console.log(processId);
-        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + processId, { headers: this.headers})
+        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API +, { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
