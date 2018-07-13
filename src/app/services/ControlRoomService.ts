@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 import { ResourceGroupModel } from '../models/ResourceGroupModel';
 import { BASE_PATH, ABBOT_RESOURCE_GROUP_MANAGEMENT_API } from '../services/services';
 import{ AuthService } from '../services/AuthService';
+import { TreeNode } from 'primeng/primeng';
 
 @Injectable()
 export class ControlRoomService {
@@ -30,11 +31,42 @@ export class ControlRoomService {
             }
         });
      }
+    public getAllResources(): Observable<any[]>{
+        return this.http.get("http://localhost:8080/abbot/abbot-resource-management",{headers: this.headers})
+        .map((response: Response) => {
+            if (response.status === 204) {
+                return undefined;
+            } else if (response.status === 500) {
+                return null;
+            }else {
+                return response.json();
+            }
+        });
+     }
+
+     public getAllProcesses(): Observable<any[]>{
+            return this.http.get("http://localhost:8080/abbot/abbot-process-management",{headers: this.headers})
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else if (response.status === 500) {
+                    return null;
+                }else {
+                    return response.json();
+                }
+            });
+         }
+
 
      public getResourceGroupModel(id:Number){
 
      }
 
+    getFiles() {
+        return this.http.get('/assets/files.json')
+                    .toPromise()
+                    .then(res => <TreeNode[]> res.json().data);
+    }
 
      createResourceGroupModel(resourceGroupModel: ResourceGroupModel){
 
