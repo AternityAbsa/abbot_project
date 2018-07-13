@@ -7,9 +7,9 @@
                         Queue Manager
                 </div>
                 <div>
-               
+
                 <div class="card-body table-responsive">
-                        <table class="table table-striped">      
+                        <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -20,24 +20,19 @@
                         <tbody>
                             <tr *ngFor="let process of process_List; let i = index">
                             <th scope="row">{{ i + 1 }}</th>
-                            <!-- <td>{{process.processId}}</td>
-                            <td>{{process.processName}}</td>
-                            <td>{{process.status}}</td>
-                            <td>{{process.timestamp}}</td>
-                            <td>{{process.userId}}</td>
-                            <td>{{process.username}}</td> -->
+
                             <td>
                                     <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
                                     </td>
                                     <td>
                                     <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
-                           </td>    
+                           </td>
 
                         </tr>
-                        </tbody>             
-                    </table>  
+                        </tbody>
+                    </table>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 </div>

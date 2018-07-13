@@ -6,6 +6,10 @@ import { ResourceGroupModel } from '../../models/ResourceGroupModel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from '../../layout/layout.component';
 import { routerTransition } from './../../router.animations';
+import { TreeNode } from 'primeng/primeng';
+
+
+
 
 @Component({
   selector: 'app-control-room',
@@ -14,26 +18,30 @@ import { routerTransition } from './../../router.animations';
   animations: [routerTransition()]
 })
 export class ControlRoomComponent implements OnInit{
-
-index: number = 0;
-resourceGroups: any [] = [];
-
+resources: any []= [];
+processes: any [] = [];
+files: TreeNode[] = [];
 constructor(private controlRoomService: ControlRoomService) {
-    this.controlRoomService.getAllResourceGroups().subscribe( data=> {
-      this.resourceGroups=data;
+
+  this.controlRoomService.getAllResourceGroups().subscribe( (data: any)=> {
+    });
+
+    this.controlRoomService.getAllResources().subscribe( (data: any)=> {
+     this.resources=data;
+    });
+
+   this.controlRoomService.getFiles().then(files => this.files = files);
+
+    this.controlRoomService.getAllProcesses().subscribe( data=> {
+      this.processes=data;
     });
 
 }
-
-openNext() {
-        this.index = (this.index === 2) ? 0 : this.index + 1;
-}
-
-openPrev() {
-        this.index = (this.index === 0) ? 2 : this.index - 1;
-}
-
 ngOnInit() {
+
+}
+
+nodeExpand(event: any) {
 
 }
 }

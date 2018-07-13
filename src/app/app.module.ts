@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { TabViewModule } from 'primeng/tabview';
+import { DragDropModule } from 'primeng/dragdrop';
 import { MenuItem } from 'primeng/api';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
@@ -26,6 +27,11 @@ import { ProcessStepControllerService} from './services/ProcessStepControllerSer
 import { ActionManagementService } from './services/ActionManagementService';
 import { ResourceGroupModel } from './models/ResourceGroupModel';
 import { ControlRoomService } from './services/ControlRoomService';
+import { DataTableModule } from 'primeng/primeng';
+import { PaginatorModule } from 'primeng/primeng';
+import { TreeModule } from 'primeng/primeng';
+import { FormsModule }  from '@angular/forms';
+import {CarouselModule} from 'primeng/carousel';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -41,6 +47,12 @@ export function createTranslateLoader(http: HttpClient) {
         CommonModule,
         BrowserModule,
         TabViewModule,
+        DragDropModule,
+        FormsModule,
+        CarouselModule,
+        DataTableModule,
+        TreeModule,
+        PaginatorModule,
         BrowserAnimationsModule,
         HttpClientModule,
         NgbModule.forRoot(),
