@@ -6,7 +6,6 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { AddUserFormComponent } from './add-user-form/add-user-form.component';
 
 
 @NgModule({
@@ -16,6 +15,6 @@ import { AddUserFormComponent } from './add-user-form/add-user-form.component';
         TranslateModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, AddUserFormComponent]
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
 })
 export class LayoutModule {}

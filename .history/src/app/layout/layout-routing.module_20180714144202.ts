@@ -12,7 +12,7 @@ const routes: Routes = [
             { path: 'process', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'app-user', loadChildren: './user/user.module#UserModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
-            { path: 'credentials', loadChildren: './tables/tables.module#TablesModule' },
+            { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'resource', loadChildren: './resource/resource.module#ResourcePageModule' },
             { path: 'queue', loadChildren: './queue/queue.module#QueuePageModule' },

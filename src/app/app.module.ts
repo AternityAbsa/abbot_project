@@ -17,7 +17,7 @@ import { ResourcesModel } from './models/ResourcesModel';
 import { ResourceService } from './services/ResourceService';
 import { QueueModel } from './models/QueueModel';
 import { QueueService } from './services/QueueService';
-import { UserManagementModel, UserRole } from './models/UserManagementModel';
+import { UserManagementModel, UserRole, UserPermission, UserPermissionGroup } from './models/UserManagementModel';
 import { UserManagementService } from './services/UserManagementService';
 import { NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProcessStepControllerService} from './services/ProcessStepControllerService';
@@ -53,7 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard, 
                 UserManagementModel, UserManagementService, ProcessStepControllerService,
-                NgbModule, UserRole
+                NgbModule, UserRole, UserPermission, UserPermissionGroup
                 ],
     bootstrap: [AppComponent]
 })

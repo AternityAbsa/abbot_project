@@ -63,8 +63,8 @@ export class UserManagementService {
         });  
      }
 
-     updateUser(user: UserManagementModel){
-        return this.http.put(BASE_PATH + ABBOT_USER_MANAGEMENT_API, JSON.stringify(user), { headers: this.headers})
+     updateUser(userModel: UserManagementModel){
+        return this.http.put(BASE_PATH + ABBOT_USER_MANAGEMENT_API, JSON.stringify(userModel), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

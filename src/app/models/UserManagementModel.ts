@@ -2,24 +2,34 @@ import * as models from '../models/models';
 
 export class UserManagementModel  {
    
-        createdBy: CreatedByOrLastModifiedBy;
-        departmentId: string;
-        lastModifiedBy: CreatedByOrLastModifiedBy;
-        systemUsername: string;
-        username: string;
-        userRoleId: number;
-        loginAttemps: number;
-        passwordDuration: number;
-        userId: number;
-    }  
-    
-    export class CreatedByOrLastModifiedBy {
-        userid: number;
-        authorities?: (string)[] | null;
-        userRole: UserRole;
-      }
-      export class UserRole {
-        id: number;
-
+    userId       :               number;
+    abbotUserRole:               UserRole;
+    alertEventTypes:             number;
+    alertNotificationTypes:      number;
+    authorities:                 string[];
+    loginattempts:               number;
+    password:                    string;
+    passwordDurationWeeks:       number;
+    systemusername:              string;
+    useremail:                   string;
+    username:                    string;
 }
+
+export class UserRole {
+    abbotPermission: UserPermission;
+    id:              number;
+    name:            string;
+}
+
+export class UserPermission {
+    abbotPermissionGroup: UserPermissionGroup;
+    id:                   number;
+    name:                 string;
+}
+
+export class UserPermissionGroup {
+    id:   number;
+    name: string;
+}
+
 

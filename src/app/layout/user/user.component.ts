@@ -1,26 +1,25 @@
 import { Component, OnInit , ViewEncapsulation} from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { UserManagementService } from '../../services/UserManagementService';
-import { UserManagementModel } from '../../models/UserManagementModel';
+import { UserManagementModel, UserRole, UserPermission, UserPermissionGroup } from '../../models/UserManagementModel';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 class UserList {
   Value: string;   
-  constructor(  public userId: number=0, public lastModifiedBy: string = '', public userRoleId: number=0, 
-                public username: string = '', public systemUsername: string = '', Value: string,
-                public passwordDuration: number=0, public createdBy : string ='', public loginAttemps: number=0
+  constructor(  public alertNotificationTypes: number = 0,
+                public username: string = '', public systemUsername: string = '', public  useremail: string='',
+                public loginAttemps: number = 0,
+                public alertEventTypes: number = 0, public userRoleId: number = 0
         ) 
         {
-            this.Value = Value;
-
-            this.userId = userId;
-            this.lastModifiedBy = lastModifiedBy;
-            this.createdBy = createdBy;
+            this.useremail = useremail;
+            this.userRoleId = userRoleId;
+            this.alertEventTypes = alertEventTypes;
             this.username = username;
             this.systemUsername = systemUsername;
             this.loginAttemps = loginAttemps;
-
+            this.alertNotificationTypes = alertNotificationTypes;
         }
 }
 
@@ -49,23 +48,28 @@ export class UserComponent implements OnInit {
   userList: UserList[];
 
   constructor( private userService: UserManagementService, private userModel: UserManagementModel, private modalService: NgbModal,
-               private fb: FormBuilder) { 
-                 this.createForm();
+               private fb: FormBuilder, private userRole: UserRole, private userPermission: UserPermission, 
+               private userPermissionGroup: UserPermissionGroup) { 
+               this.createForm();
                }
-
                createForm(){
-                this.userForm = this.fb.group({
-                  lastModifiedBy:['', Validators.required],
-                  createdBy:['', Validators.required],
-                  username:['', Validators.required],
-                  systemUsername:['', Validators.required],
-                  lastModifiedByUserId:['', Validators.required],
-                  loginAttemps:['', Validators.required],
-                  userId:['', Validators.required]
+                    this.userForm = this.fb.group({
+                    abbotUserRole:['', Validators.required],
+
+                    alertEventTypes:['', Validators.required],
+                    alertNotificationTypes:['', Validators.required],
+                    loginattempts:['', Validators.required],
+                    password:['', Validators.required],
+                    systemusername:['', Validators.required],
+
+                    useremail:['', Validators.required],
+                    username:['', Validators.required],
+
+                    abbotPermission:['', Validators.required],
+                    abbotPermissionGroup:['', Validators.required]
               });
             }
           
-
   ngOnInit() {
     this.getAllUsers();
   }
@@ -74,7 +78,7 @@ export class UserComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       data=>{
         this.userList = data;
-        console.log(this.userList);
+        //console.log(this.userList);
       }
     );
   }
@@ -83,28 +87,31 @@ export class UserComponent implements OnInit {
     this.modalRef  = this.modalService.open(content, { size: 'lg' });
    }
 
-  AddUser(username, userRoleId,systemUsername, departmentId){
-    console.log(username,userRoleId );
-    this.userModel.username = username;
-    this.userModel.userRoleId = userRoleId;
-    this.userModel.departmentId = departmentId;
-    this.userModel.systemUsername = systemUsername;
+  addUser(username, systemusername, useremail, passwordDurationWeeks, password, loginattempts,authorities, 
+          alertNotificationTypes, alertEventTypes, userRoleName, permissionName, permissionId,
+          permissionGroupName, permissionGroupId){
 
-    this.userService.createUser(this.userModel).subscribe(
-      data =>{
-        this.getAllUsers();
-    }
-    );
-  }
-
-  saveUser(username, userRoleId,systemUsername, departmentId){
-    this.userModel.username = username;
-    this.userModel.userRoleId = userRoleId;
-    this.userModel.systemUsername = systemUsername;
-    this.userModel.departmentId = departmentId
-    this.userService.updateUser(this.userModel).subscribe(
-      data =>{
-        this.getAllUsers();
+          this.userPermissionGroup.id = permissionGroupId;
+          this.userPermissionGroup.name = permissionGroupName;
+          this.userPermission.id = permissionId;
+          this.userPermission.name = permissionName;
+          this.userRole.abbotPermission = this.userPermission;
+          /** user role id references user role table */
+          this.userRole.id = 1;
+          this.userRole.name = userRoleName;
+          this.userModel.abbotUserRole = this.userRole;
+          this.userModel.alertEventTypes =  alertEventTypes;
+          this.userModel.alertNotificationTypes = alertNotificationTypes;
+          this.userModel.authorities = [authorities];
+          this.userModel.loginattempts = loginattempts;
+          this.userModel.password = password;
+          this.userModel.passwordDurationWeeks = passwordDurationWeeks;
+          this.userModel.systemusername = systemusername;
+          this.userModel.useremail = useremail;
+          this.userModel.username = username;
+          this.userService.createUser(this.userModel).subscribe(
+            data =>{
+              this.getAllUsers();
     }
     );
   }
@@ -114,8 +121,39 @@ export class UserComponent implements OnInit {
     this.modalService.open(content1, { size: 'lg' });
    }
 
-    deleteUser(userId){
-      this.userService.deleteUser(userId).subscribe(
+  updateUser(username, systemusername, useremail, passwordDurationWeeks,password, loginattempts,authorities, 
+             alertNotificationTypes, alertEventTypes, userRoleName, userId, permissionName, permissionId,
+             permissionGroupName, permissionGroupId){
+
+              this.userPermissionGroup.id = permissionGroupId;
+              this.userPermissionGroup.name = permissionGroupName;
+              this.userPermission.id = permissionId;
+              this.userPermission.name = permissionName;
+              this.userRole.abbotPermission = this.userPermission;
+              this.userRole.id = 1;
+              this.userRole.name = userRoleName;
+              this.userModel.abbotUserRole = this.userRole;
+              this.userModel.alertEventTypes =  alertEventTypes;
+              this.userModel.alertNotificationTypes = alertNotificationTypes;
+              this.userModel.authorities = [authorities];
+              this.userModel.loginattempts = loginattempts;
+              this.userModel.password = password;
+              this.userModel.passwordDurationWeeks = passwordDurationWeeks;
+              this.userModel.systemusername = systemusername;
+              this.userModel.useremail = useremail;
+              this.userModel.username = username;
+              this.userModel.userId = userId;
+
+              this.userService.updateUser(this.userModel).subscribe(
+              data =>{
+              this.getAllUsers();
+         }
+    );
+  }
+
+    deleteUser(userRoleId){
+      console.log(userRoleId);
+      this.userService.deleteUser(userRoleId).subscribe(
         data => { 
          alert('User successfully Deleted');
          this.getAllUsers();
