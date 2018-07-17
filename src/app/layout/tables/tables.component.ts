@@ -70,14 +70,14 @@ export class TablesComponent implements OnInit {
     getAllCredentials(){
         this.credentialsService.getAllCredentials().subscribe(
             data=>{
-              //this.credList = data;
+              this.credList = data;
               console.log(data);
             }
-          );
-    }
+            );
+        }
 
-    manageCredentials(content){
-        this.modalRef  = this.modalService.open(content, { size: 'lg' });
+      manageCredentials(content){
+            this.modalRef  = this.modalService.open(content, { size: 'lg' });
        }
     
        createCredential(description, password, name, login, invalid){
@@ -124,8 +124,5 @@ export class TablesComponent implements OnInit {
         this.getAllCredentials();
       });
     }
-    
 
-
-    
 }

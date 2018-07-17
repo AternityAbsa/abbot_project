@@ -6,7 +6,7 @@ import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/Rx';
 import { AuthModel } from '../models/models';
-import { UserManagementModel } from '../models/UserManagementModel';
+import { ActionManagementModel } from '../models/ActionManagementModel';
 import{ AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_ACTION_MANAGEMENT_API } from '../services/services';
 
@@ -54,8 +54,8 @@ export class ActionManagementService {
         });  
      }
 
-     public createAction(user: UserManagementModel): Observable<any[]>{
-        return this.http.post(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(user))
+     public createAction(action: ActionManagementModel): Observable<any[]>{
+        return this.http.post(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(action),  { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -68,8 +68,8 @@ export class ActionManagementService {
         });  
      }
 
-     updateUpdate(user: UserManagementModel){
-        return this.http.put(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(user))
+     updateAction(action: ActionManagementModel){
+        return this.http.put(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(action),  { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

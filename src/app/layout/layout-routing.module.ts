@@ -16,7 +16,7 @@ const routes: Routes = [
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
             { path: 'resource', loadChildren: './resource/resource.module#ResourcePageModule' },
             { path: 'queue', loadChildren: './queue/queue.module#QueuePageModule' },
-            { path: 'bs-element', loadChildren: './bs-element/bs-element.module#BsElementModule' },
+            { path: 'action-management', loadChildren: './action-management/action-management.module#ActionManagementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },          

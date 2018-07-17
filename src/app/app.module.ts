@@ -21,9 +21,10 @@ import { UserManagementModel, UserRole, UserPermission, UserPermissionGroup } fr
 import { UserManagementService } from './services/UserManagementService';
 import { NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ProcessStepControllerService} from './services/ProcessStepControllerService';
-import { ActionManagementService } from './services/ActionManagementService';
 import { CredentialsManagerService } from './services/CredentialsManagerService';
 import { CredentialsManagerModel } from './models/CredentialsManagerModel';
+import { ActionManagementModel } from './models/ActionManagementModel';
+import { ActionManagementService } from './services/ActionManagementService';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
@@ -55,7 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard, 
                 UserManagementModel, UserManagementService, ProcessStepControllerService,
-                NgbModule, UserRole, UserPermission, UserPermissionGroup, CredentialsManagerModel, CredentialsManagerService
+                NgbModule, UserRole, UserPermission, UserPermissionGroup, CredentialsManagerModel, CredentialsManagerService,
+                ActionManagementModel
                 ],
     bootstrap: [AppComponent]
 })
