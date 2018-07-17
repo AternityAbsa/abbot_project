@@ -11,9 +11,9 @@ import { PaginatorModule } from 'primeng/primeng';
 import { TreeModule } from 'primeng/primeng';
 import { FormsModule }  from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 @NgModule({
-    imports: [CommonModule, ControlRoomRoutingModule, PageHeaderModule, TreeModule,FormsModule,CarouselModule,DataTableModule, PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
+    imports: [CommonModule, ControlRoomRoutingModule,PageHeaderModule, ConfirmDialogModule,TreeModule,FormsModule,CarouselModule,DataTableModule, PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
     declarations: [ControlRoomComponent]
 })
 export class ControlRoomModule {}

@@ -12,12 +12,25 @@ import { TreeNode } from 'primeng/primeng';
 
 @Injectable()
 export class ControlRoomService {
-     private headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.authenticationService.getToken()
-        });
 
+    private queryUrl: string = '?search=';
+    private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + this.authenticationService.getToken()
+    });
     constructor(private http: Http, private authenticationService: AuthService) {}
+
+     search(terms: Observable<string>) {
+         return terms.debounceTime(400)
+         .distinctUntilChanged()
+         .switchMap(term => this.searchEntries(term));
+      }
+
+     searchEntries(term) {
+        return this.http
+            .get("http://localhost:8080/" + this.queryUrl + term)
+            .map(res => res.json());
+      }
 
      public getAllResourceGroups(): Observable<any[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-resource-group-management",{headers: this.headers})
@@ -31,6 +44,20 @@ export class ControlRoomService {
             }
         });
      }
+
+  public getAllQueueItems(): Observable<any[]>{
+        return this.http.get("http://localhost:8080/abbot/abbot-work-queue-item-management",{headers: this.headers})
+        .map((response: Response) => {
+            if (response.status === 204) {
+                return undefined;
+            } else if (response.status === 500) {
+                return null;
+            }else {
+                return response.json();
+            }
+        });
+     }
+
     public getAllResources(): Observable<any[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-resource-management",{headers: this.headers})
         .map((response: Response) => {

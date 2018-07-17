@@ -7,82 +7,97 @@
 
 
     <div class="ui-g">
-        <div class="ui-g-5">
-
-            <div class="col col-xl-12 col-lg-6" >
-                <div> Resource Groups
-                    <div >
-                        <p-tree [value]="files" ></p-tree >
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui-g-2"></div>
-        <div class="ui-g-5">
-            <div> Process Groups
-                <div >
-                    <p-tree [value]="files" ></p-tree >
-                </div>
-
-            </div>
-        </div>
     </div>
-
 
     <div class="ui-g">
         <div class="ui-g-4">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Resources</th>
-                </tr>
-                </thead>
-            </table>
-            <p>&nbsp;&nbsp;&nbsp;Available</p>
-            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul>
+            <h4>&nbsp;Processes</h4>
+            <div class="div1" align="left">
+                <div align="left">
+                    <br/>&nbsp;&nbsp;&nbsp;Search
+                    <input placeholder="&nbsp;&nbsp;process groups"
+                        (keyup)="searchTerm$.next($event.target.value)">
 
+                    <ul *ngIf="results">
+                        <li *ngFor="let result of results | slice:0:9">
+                            <a href="{{ result.latest }}" target="_blank">
+                                {{ result.name }}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <hr/>
+                <ul class="list">
                     <li>
-                        <img id="drag1" src="/assets/abbot_resource.png" draggable="true" ondragstart="drag(event)" width="20" height="20"></li>
-                    <li> <img id="drag1" src="/assets/abbot_resource.png" draggable="true" ondragstart="drag(event)" width="20" height="20"></li>
-                    <li> <img id="drag1" src="/assets/abbot_resource.png" draggable="true" ondragstart="drag(event)" width="20" height="20"></li>
+                        <img id="drag1"  src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                        &nbsp;<a href="#">DUMMY_ABBOT_PROCESS_UAT</a>
+                    </li>
+                    <li>
+                        <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                        &nbsp;<a href="#">DUMMY_ABBOT_PROCESS_PAYMENTS_UAT</a>
+                    </li>
+                    <li>
+                        <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                        &nbsp;<a href="#">DUMMY_ABBOT_PROCESS_HOME_LOANS_UAT</a>
+                    </li>
                 </ul>
+                </div>
             </div>
             <br>
 
         </div>
         <div class="ui-g-3"></div>
         <div class="ui-g-4">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Processes</th>
-                </tr>
-                </thead>
-            </table>
-            <p>&nbsp;&nbsp;&nbsp;Available</p>
-            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <ul>
-                    <li>
-                        <img src="/assets/images/red_icon.png"  width="20" height="20">
-                        <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+            <h4 >Resources</h4>
+            <div class="div1" >
+                <div align="left">
+                    <br/>&nbsp;&nbsp;&nbsp;Search
+                    <input  placeholder="&nbsp;&nbsp;resource groups"
+                        (keyup)="searchTerm$.next($event.target.value)">
+
+                    <ul *ngIf="results">
+                        <li *ngFor="let result of results | slice:0:9">
+                            <a href="{{ result.latest }}" target="_blank">
+                                {{ result.name }}
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <hr/>
+                <ul class="list">
+                    <!--<li *ngFor="let result of results">-->
+                        <!--<div class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">-->
+                            <!--<img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">-->
+                            <!--<a href="#" target="_blank">-->
+                             <!--{{ result.name }}-->
+                             <!--</a>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <li align="left">
+                        <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">
+                           <a  href="#">192.225.335.64</a>
+                           <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">&nbsp;
+                        </div>
                     </li>
-                    <li>
-                        <img src="/assets/images/red_icon.png"  width="20" height="20">
-                        <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                    <li align="left">
+                        <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <a  href="#">192.225.335.70</a>
+                            <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">&nbsp;
+                        </div>
                     </li>
-                    <li>
-                        <img src="/assets/images/red_icon.png"  width="20" height="20">
-                        <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                    <li align="left">
+                        <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <a  href="#">192.225.335.110</a>
+                            <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">&nbsp;
+                        </div>
                     </li>
                 </ul>
             </div>
             <br>
-
         </div>
     </div>
-
-<br/> Queue Management
+    &nbsp;&nbsp;&nbsp;Queue Management
     <table class="table table-striped">
         <thead>
         <tr>
@@ -91,27 +106,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let process of process_List; let i = index">
+        <tr *ngFor="let qItem of queueItems; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-
-            <td>
-                <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
-            </td>
-
+            <td>{{qItem.name}}</td>
         </tr>
         </tbody>
     </table>
 
 </section>
 
-<style>
-#div1 {
-    width: 500px;
-    height: 300px;
-    padding: 10px;
-    border: 1px solid #aaaaaa;
-}
-</style>

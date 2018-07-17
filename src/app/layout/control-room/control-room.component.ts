@@ -7,26 +7,41 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from '../../layout/layout.component';
 import { routerTransition } from './../../router.animations';
 import { TreeNode } from 'primeng/primeng';
-
-
-
+import {ConfirmationService} from 'primeng/api';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-control-room',
   templateUrl: './control-room.component.html',
   styleUrls: ['./control-room.component.scss'],
-  animations: [routerTransition()]
+  animations: [routerTransition()],
+  providers: [ControlRoomService]
 })
 export class ControlRoomComponent implements OnInit{
 resources: any []= [];
 processes: any [] = [];
+queueItems: any [] = [];
 files: TreeNode[] = [];
-constructor(private controlRoomService: ControlRoomService) {
+showConfirm: boolean=false;
+results: Object;
+searchTerm$ = new Subject<string>();
+
+constructor(private controlRoomService: ControlRoomService,
+            private confirmationService: ConfirmationService) {
+
+ this.controlRoomService.search(this.searchTerm$)
+      .subscribe(results => {
+        this.results = results.results;
+      });
 
   this.controlRoomService.getAllResourceGroups().subscribe( (data: any)=> {
-    });
+  });
 
-    this.controlRoomService.getAllResources().subscribe( (data: any)=> {
+ this.controlRoomService.getAllQueueItems().subscribe( (data: any)=> {
+  this.queueItems=data;
+  });
+
+  this.controlRoomService.getAllResources().subscribe( (data: any)=> {
      this.resources=data;
     });
 
@@ -41,7 +56,4 @@ ngOnInit() {
 
 }
 
-nodeExpand(event: any) {
-
-}
 }

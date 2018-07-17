@@ -32,6 +32,8 @@ import { PaginatorModule } from 'primeng/primeng';
 import { TreeModule } from 'primeng/primeng';
 import { FormsModule }  from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -49,6 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
         TabViewModule,
         DragDropModule,
         FormsModule,
+        ConfirmDialogModule,
         CarouselModule,
         DataTableModule,
         TreeModule,
@@ -71,7 +74,7 @@ export function createTranslateLoader(http: HttpClient) {
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard,
                 UserManagementModel, UserManagementService,
-                ProcessStepControllerService, ResourceGroupModel,ControlRoomService
+                ProcessStepControllerService, ConfirmationService, ResourceGroupModel,ControlRoomService
                 ],
     bootstrap: [AppComponent]
 })
