@@ -25,6 +25,7 @@ files: TreeNode[] = [];
 showConfirm: boolean=false;
 results: Object;
 searchTerm$ = new Subject<string>();
+color:string = 'red';
 
 constructor(private controlRoomService: ControlRoomService,
             private confirmationService: ConfirmationService) {
@@ -54,6 +55,10 @@ constructor(private controlRoomService: ControlRoomService,
 }
 ngOnInit() {
 
+}
+
+envelope(event: MouseEvent) {
+  this.color = event.type == 'mouseover' ? 'yellow' : 'red';
 }
 
 }

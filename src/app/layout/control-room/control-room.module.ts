@@ -12,8 +12,10 @@ import { TreeModule } from 'primeng/primeng';
 import { FormsModule }  from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+
 @NgModule({
-    imports: [CommonModule, ControlRoomRoutingModule,PageHeaderModule, ConfirmDialogModule,TreeModule,FormsModule,CarouselModule,DataTableModule, PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
+    imports: [CommonModule, ControlRoomRoutingModule,ScrollPanelModule, PageHeaderModule, ConfirmDialogModule,TreeModule,FormsModule,CarouselModule,DataTableModule, PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
     declarations: [ControlRoomComponent]
 })
 export class ControlRoomModule {}
