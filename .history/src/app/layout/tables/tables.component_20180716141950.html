@@ -1,0 +1,54 @@
+<div>
+    <app-page-header [heading]="'Credentials Manager'"></app-page-header>
+    <div class="row">
+            <div class="col col-xl-12 col-lg-12">
+                <div class="card mb-12">
+                    <!-- <div class="card-header">
+                           Credentials Manager
+                    </div> -->
+                    <div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Location</th>
+                            <th>Expiry Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let credential of credentials; let i=index">
+                            <!-- <th scope="row">{{ i + 1 }}</th>
+                            <td>{{process.processId}}</td>
+                            <td>{{process.name}}</td>
+                            <td>{{process.description}}</td>
+                            <td>{{process.version}}</td>
+                            <td>{{process.runmode}}</td>
+                            <td>{{process.sharedObject}}</td>
+                            <td>{{process.processType}}</td>
+                            <td>{{process.createdBy}}</td> -->
+
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editCredential(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(credentials)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/app-add-user-form']">Manage Credentials</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+
