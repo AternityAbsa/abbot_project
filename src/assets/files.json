@@ -1,0 +1,50 @@
+{
+    "data":
+    [
+        {
+            "label": "grp test 1",
+            "data": "Documents Folder",
+            "expandedIcon": "fa fa-folder-open",
+            "collapsedIcon": "fa fa-folder",
+            "children": [
+                {
+                    "label": "resource test 1",
+                    "data": "Work Folder",
+                    "expandedIcon": "fa fa-cloud",
+                    "collapsedIcon": "fa fa-cloud"
+                },
+                {
+                    "label": "resource test 1",
+                    "data": "Home Folder",
+                    "expandedIcon": "fa fa-folder-open",
+                    "collapsedIcon": "fa fa-cloud"
+                }]
+        },
+        {
+            "label": "grp test 2",
+            "data": "Pictures Folder",
+            "expandedIcon": "fa fa-folder-open",
+            "collapsedIcon": "fa fa-folder",
+            "children": [
+                {"label": "barcelona.jpg", "icon": "fa fa-file-image-o", "data": "Barcelona Photo"},
+                {"label": "logo.jpg", "icon": "fa fa-file-image-o", "data": "PrimeFaces Logo"},
+                {"label": "primeui.png", "icon": "fa fa-file-image-o", "data": "PrimeUI Logo"}]
+        },
+        {
+            "label": "grp test 3",
+            "data": "Movies Folder",
+            "expandedIcon": "fa fa-folder-open",
+            "collapsedIcon": "fa fa-folder",
+            "children": [{
+                "label": "Al Pacino",
+                "data": "Pacino Movies",
+                "children": [{"label": "Scarface", "icon": "fa fa-file-video-o", "data": "Scarface Movie"}, {"label": "Serpico", "icon": "fa fa-file-video-o", "data": "Serpico Movie"}]
+            },
+                {
+                    "label": "Robert De Niro",
+                    "data": "De Niro Movies",
+                    "children": [{"label": "Goodfellas", "icon": "fa fa-file-video-o", "data": "Goodfellas Movie"}, {"label": "Untouchables", "icon": "fa fa-file-video-o", "data": "Untouchables Movie"}]
+                }]
+        }
+    ]
+}
