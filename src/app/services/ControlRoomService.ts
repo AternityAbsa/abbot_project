@@ -6,8 +6,13 @@ import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { ResourceGroupModel } from '../models/ResourceGroupModel';
+<<<<<<< HEAD
 import { BASE_PATH, ABBOT_RESOURCE_GROUP_MANAGEMENT_API } from '../services/services';
 import{ AuthService } from '../services/AuthService';
+=======
+import { BASE_PATH, ABBOT_RESOURCE_GROUP_MANAGEMENT_API }  from'../services/services';
+import { AuthService } from '../services/AuthService';
+>>>>>>> master
 import { TreeNode } from 'primeng/primeng';
 
 @Injectable()
@@ -33,7 +38,11 @@ export class ControlRoomService {
       }
 
      public getAllResourceGroups(): Observable<any[]>{
+<<<<<<< HEAD
         return this.http.get("http://localhost:8080/abbot/abbot-resource-group-management",{headers: this.headers})
+=======
+        return this.http.get(BASE_PATH + ABBOT_RESOURCE_GROUP_MANAGEMENT_API,{headers: this.headers})
+>>>>>>> master
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

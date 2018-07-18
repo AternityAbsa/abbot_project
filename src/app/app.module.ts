@@ -14,34 +14,50 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { ProcessesService} from './services/ProcessesServices';
-import { ProcessModel} from './models/ProcessModel';
+import { ProcessModel, CreatedByOrLastModifiedBy, AbbotUserRole } from './models/ProcessModel';
 import { AuthService} from './services/AuthService';
 import { AuthModel} from './models/AuthModel';
 import { ResourcesModel } from './models/ResourcesModel';
 import { ResourceService } from './services/ResourceService';
 import { QueueModel } from './models/QueueModel';
 import { QueueService } from './services/QueueService';
-import { UserManagementModel} from './models/UserManagementModel';
+import { UserManagementModel, UserRole, UserPermission, UserPermissionGroup } from './models/UserManagementModel';
 import { UserManagementService } from './services/UserManagementService';
+<<<<<<< HEAD
+=======
+import { NgbModule, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> master
 import { ProcessStepControllerService} from './services/ProcessStepControllerService';
+import { CredentialsManagerService } from './services/CredentialsManagerService';
+import { CredentialsManagerModel } from './models/CredentialsManagerModel';
+import { ActionManagementModel } from './models/ActionManagementModel';
 import { ActionManagementService } from './services/ActionManagementService';
+<<<<<<< HEAD
+=======
+import { ReactiveFormsModule } from '@angular/forms';
+>>>>>>> master
 import { ResourceGroupModel } from './models/ResourceGroupModel';
 import { ControlRoomService } from './services/ControlRoomService';
 import { DataTableModule } from 'primeng/primeng';
 import { PaginatorModule } from 'primeng/primeng';
 import { TreeModule } from 'primeng/primeng';
+<<<<<<< HEAD
 import { FormsModule }  from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+=======
+import {CarouselModule} from 'primeng/carousel';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import { TabViewModule } from 'primeng/tabview';
+import { DragDropModule } from 'primeng/dragdrop';
+>>>>>>> master
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
-    // for development
-    // return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 
 @NgModule({
     imports: [
@@ -58,6 +74,17 @@ export function createTranslateLoader(http: HttpClient) {
         PaginatorModule,
         BrowserAnimationsModule,
         HttpClientModule,
+<<<<<<< HEAD
+=======
+        TabViewModule,
+        DragDropModule,
+        ConfirmDialogModule,
+        CarouselModule,
+        DataTableModule,
+        TreeModule,
+        PaginatorModule,
+        ReactiveFormsModule,
+>>>>>>> master
         NgbModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
@@ -69,12 +96,22 @@ export function createTranslateLoader(http: HttpClient) {
         AppRoutingModule
     ],
     declarations: [AppComponent],
+<<<<<<< HEAD
     providers:  [
                 ProcessesService, ProcessModel,
                 AuthService, AuthModel, ResourcesModel, ActionManagementService,
                 ResourceService, QueueModel, QueueService, AuthGuard,
                 UserManagementModel, UserManagementService,
                 ProcessStepControllerService, ConfirmationService, ResourceGroupModel,ControlRoomService
+=======
+    providers:  [ 
+                ProcessesService, ProcessModel, CreatedByOrLastModifiedBy, AbbotUserRole,
+                AuthService, AuthModel, ResourcesModel, ActionManagementService,
+                ResourceService, QueueModel, QueueService, AuthGuard, 
+                UserManagementModel, UserManagementService, ProcessStepControllerService,
+                NgbModule, UserRole, UserPermission, UserPermissionGroup, CredentialsManagerModel, CredentialsManagerService,
+                ActionManagementModel,  ConfirmationService, ResourceGroupModel, ControlRoomService
+>>>>>>> master
                 ],
     bootstrap: [AppComponent]
 })

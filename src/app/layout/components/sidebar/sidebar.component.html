@@ -1,5 +1,6 @@
 
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}" style="background-color:red;border:thin solid white;">
+<<<<<<< HEAD
 
 
      <div class="list-group" >
@@ -22,6 +23,28 @@
             <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'User Management' | translate }}
         </a>
         <a onMouseOver="this.style.background-color='red'" onMouseOut="this.style.background-color='red'" [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+=======
+     <div class="list-group">
+        <a [routerLink]="['/process']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Maintain Process' | translate }}
+        </a>
+        <a  [routerLink]="['/app-user']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ ' User Management' | translate }}
+        </a>
+        <a [routerLink]="['/credentials']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Credentials Manager' | translate }}
+        </a> 
+        <a  [routerLink]="['/resource']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Resource Manager' | translate }}
+        </a>
+        <a [routerLink]="['/queue']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Queue Manager' | translate }}
+        </a> 
+        <!-- <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Control Room' | translate }}
+        </a> -->
+        <a  [routerLink]="['/action-management']" [routerLinkActive]="['router-link-active']" class="list-group-item" style="background-color:red;color:white;">
+>>>>>>> master
             <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Manage Actions' | translate }}
         </a>
     </div>

@@ -1,3 +1,57 @@
-<p>
-  not-found works!
-</p>
+<div class="not-found" [@routerTransition]>
+    <div class="row justify-content-md-center">
+                <div class="card-header">
+                    <h1>User List</h1>
+                </div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Id</th>
+                            <th>Created By</th>
+                            <th>Last Modified By</th>
+                            <th>Last Modified Date</th>
+                            <th>alert Event Types</th>
+                            <th>Alert Notification Types</th>
+                            <th>UserName</th>
+                            <th>Abbot User Role Id</th>
+                            <th>Valid From Date</th>
+                            <th>Valid To Date</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr contenteditable="" *ngFor="let process of process_Model; let i=index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{process.processId}}</td>
+                            <td>{{process.name}}</td>
+                            <td>{{process.description}}</td>
+                            <td>{{process.version}}</td>
+                            <td>{{process.runmode}}</td>
+                            <td>{{process.sharedObject}}</td>
+                            <td>{{process.processType}}</td>
+                            <td>{{process.createdBy}}</td>
+
+                            <td>
+                                <button type="button" class="btn btn-info" (click)="editProcess(i)">Edit</button>
+                            
+                            </td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="onDelete(process)">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>             
+                    </table>   
+                    <div>
+                        <form>
+                        <div class="text-right">
+                                <a class="btn btn-outline-success my-0 my-sm-0" [routerLink]="['/forms']">Create User</a>
+                        </div>  
+                        </form>
+                    </div>                  
+                </div>  
+            </div>           
+        </div>
+

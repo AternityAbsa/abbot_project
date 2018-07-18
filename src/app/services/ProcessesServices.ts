@@ -6,7 +6,7 @@ import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/Rx';
 import { ProcessModel } from '../models/models';
-import{ AuthService } from '../services/AuthService';
+import { AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_PROCESS_MANAGEMENT_API } from '../services/services';
 
 
@@ -15,7 +15,6 @@ export class ProcessesService {
 
     public processes: Array<ProcessModel>;
     private process: ProcessModel;
-
     public applications: Array<ProcessModel>;
     private headers = new Headers({
         'Content-Type': 'application/json',
@@ -24,14 +23,14 @@ export class ProcessesService {
 
         constructor(private http: Http, private authenticationService: AuthService) {}
 
-
     /**
      * get AbBot Processes 
      *
      * @param body AbBot Processes to add
      */
 
-     public getAllProcesses(): Observable<any[]>{
+     public getAllProcesses(){
+      //  this.headers.append("X-Total-Count", "500");
         return this.http.get(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API,{ headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -46,7 +45,7 @@ export class ProcessesService {
      }
 
      public getProcess(id:Number){
-        return this.http.get(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + id, { headers: this.headers})
+        return this.http.get(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API +"/"+ id, { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -59,8 +58,8 @@ export class ProcessesService {
         });  
      }
 
-
      createProcess(process: ProcessModel){
+         console.log(process);
         return this.http.post(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API, JSON.stringify(process), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -68,7 +67,7 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
+                console.log(response.json());
                 return response.json();      
             }
         }) 
@@ -90,8 +89,9 @@ export class ProcessesService {
         .catch(this.handleError);
      }
 
-     deleteProcess(id:number){
-        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + id, { headers: this.headers})
+     deleteProcess(processId: number){
+         console.log(processId);
+        return this.http.delete(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API + processId, { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

@@ -1,119 +1,241 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewEncapsulation} from '@angular/core';
 import { routerTransition } from '../../router.animations';
+<<<<<<< HEAD
 import { Router, NavigationEnd } from '@angular/router';
 import { ProcessesService } from '../../services/ProcessesServices';
 import 'rxjs/add/operator/map';
 import { ProcessModel } from '../../models/ProcessModel';
 import { Observable } from 'rxjs/Observable';
+=======
+import { Router, Params } from '@angular/router';
+import { ProcessesService} from '../../services/ProcessesServices';
+import 'rxjs/add/operator/map';
+import { ProcessModel, CreatedByOrLastModifiedBy, AbbotUserRole } from '../../models/ProcessModel';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable'; 
+>>>>>>> master
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
-
 class ProcessList {
+<<<<<<< HEAD
     Value: string;
     constructor(public processId: string = '', public processName: string = '', public description: string = '',
     public version: string = '', public status: string = null,public timestamp: string = '', Value: string)
+=======
+    Value: string;   
+    constructor(  public processId: string = '', public name: string = '', public description: string = '', 
+                  public version: string = '', public status: string = null, public runmode: number = 0, Value: string,
+                  public sharedObject: number = 0, public createdBy : string ='', public processType: string=''
+          ) 
+>>>>>>> master
     {
         this.Value = Value;
         this.processId = processId;
-        this.processName = processName;
+        this.name = name;
         this.description = description;
         this.version = version;
         this.status = status;
-        this.timestamp = timestamp;
+        this.runmode = runmode;
+        this.sharedObject = sharedObject;
+        this.processType = processType;
     }
   }
-
 @Component({
     selector: 'app-charts',
     templateUrl: './charts.component.html',
     styleUrls: ['./charts.component.scss'],
-    animations: [routerTransition()]
+    animations: [routerTransition()],
+    encapsulation: ViewEncapsulation.None,
+    styles: [`
+      .dark-modal .modal-content {
+        background-color: #292b2c;
+        color: white;
+      }
+      .dark-modal .close {
+        color: white;
+      }
+      .light-blue-backdrop {
+        background-color: #5cb3fd;
+      }
+    `],
 })
+
 export class ChartsComponent implements OnInit {
+<<<<<<< HEAD
 
     Value: string;
     updatedItem;
     newItem: any = {};
+=======
+    processForm: FormGroup;
+    modalRef: NgbModalRef;
+    process : ProcessModel = new ProcessModel();
+
+    Value: string;  
+    updatedItem;  
+    newItem: {};
+>>>>>>> master
     editIndex = null;
     rowDetails:Array<object>;
     editRow : boolean;
     updateIndex : number;
+<<<<<<< HEAD
     process_List: ProcessList[] = new Array();
     process_Model: ProcessList;
+=======
+    process_List: ProcessList[]; 
+    process_Model: ProcessList[];
+>>>>>>> master
     showNew: Boolean = false;
     // It will be either 'Save' or 'Update' based on operation.
     submitType: string = 'Save';
     // It maintains table row index based on selection.
     selectedRow: number;
     // Linked with ProcessesService Class
-    private process : any[];
+    //private process : any[];
+    constructor(private processService : ProcessesService, private processModel : ProcessModel, private createUserModifiedBy: CreatedByOrLastModifiedBy,
+                private userRole: AbbotUserRole, private router : Router, private modalService: NgbModal,
+                private fb: FormBuilder) {
+                this.createForm();
+    }
 
+    createForm(){
 
-    constructor(private processService : ProcessesService, private processModel : ProcessModel, private router : Router) {
-        this.process_List.push(
-            new ProcessList('1', 'cif search', 'A', '14h00', 'P', '', ''),
-            new ProcessList('2', 'open fbss', 'B', '16h00', 'P', '', ''),
-            new ProcessList('3', 'avaf application', 'NA', '11h00', 'P', '', ''));
-        }
+      /** Process FormControls */
+      this.processForm = this.fb.group({
+      processType:['', Validators.required],
+      name:['', Validators.required],
+      createdDate:['', Validators.required],
+      createdByUserId:['', Validators.required],
+      description:['', Validators.required],
+      lastModifiedDate:['', Validators.required],
+      lastModifiedByUserId:['', Validators.required],
+      sharedObject:['', Validators.required],
+      runmode:['', Validators.required],
+      version:['', Validators.required],
 
-onNew(){
-   // this.process_Model = new ProcessList();
-    this.submitType = 'Save';
-    this.showNew = true;
-}
+      /** Process Steps FormControl */
+      actions:['', Validators.required],
+      elementType:['', Validators.required],
+      elementValue:['', Validators.required],
+      executionOrder:['', Validators.required],
+      status:['', Validators.required]
 
+    });
+  }
 
-onSave(){
-    if (this.submitType === 'Save') {
-        // Push registration model object into registration list.
-        this.process_List.push(this.process_Model);
-      } else {
-        // Update the existing properties values based on model.
-        this.process_List[this.selectedRow].processId = this.process_Model.processId;
-        this.process_List[this.selectedRow].processName = this.process_Model.processName;
-        this.process_List[this.selectedRow].status = this.process_Model.status;
-        this.process_List[this.selectedRow].timestamp = this.process_Model.timestamp;
-      }
-      // Hide registration entry section.
-      this.showNew = true;
-}
+    saveProcess(processType, name, runmode, sharedObject, version){
+    console.log(processType, name, runmode, sharedObject, version);
+    this.processModel.abbotProcessSteps = [];
+    this.userRole.id = 1;
+    this.createUserModifiedBy.abbotUserRole = this.userRole;
+    this.createUserModifiedBy.authorities = ["ROLE_ADMIN"];
+    this.createUserModifiedBy.userid = 1;
+    this.processModel.createdBy = this.createUserModifiedBy;
+    this.processModel.lastModifiedBy = this.createUserModifiedBy;
+    this.processModel.name = name;
+    this.processModel.processType = processType; 
+    this.processModel.runmode = runmode;
+    this.processModel.sharedObject = sharedObject;
+    this.processModel.version = version;
+    
+    this.processService.createProcess(this.processModel)
+    .subscribe(value =>{
+      alert('Created a Process successfully');
+    }, error => {
+      console.log('FAILED to create Process');
+    },() =>{
+      alert('Create Process - now completed.');
+      this.getAllProcesses();
+    });
+  }
 
-editProcess(i){
-this.processService.setter(i);
-}
+  saveProcessSteps(){
+    
+    this.router.navigate(['process']);
 
+  }
+
+<<<<<<< HEAD
 onEdit(i: number){
     this.newItem.Value = this.process_List[i].Value;
     this.updatedItem = i;
     this.showNew = true;
 }
+=======
+  createNewProcess(content){
+    // Opens The Modal Form to add new Process
+    this.modalRef  = this.modalService.open(content, { size: 'lg' });
+   }
+  
+  addProcessSteps(content1){
+    // Opens The Modal Form to add new Process Steps
+    this.modalRef.close();
+    this.modalService.open(content1, { size: 'lg' });
+   }
+>>>>>>> master
 
- UpdateItem() {
+   editProcess(content2){
+    // Opens The Modal Form to Edit Processes
+    this.modalService.open(content2, { size: 'lg' });
+   }
 
+<<<<<<< HEAD
     let data = this.updatedItem;
+=======
+  getAllProcesses(){
+>>>>>>> master
 
-    for(let i = 0; i < this.process_List.length; i++){
-            if(i == data){
-                this.process_List[i].Value = this.newItem.Value;
-            }
-    }
-   // this.selectedRow = index;
-   //this.process_Model = new ProcessList();
-   // this.process_Model = Object.assign({}, this.process_List[this.selectedRow]);
-   // this.process_List = Object.assign({}, process);
-   //this.submitType = 'Update';
-    this.showNew = false;
-    this.newItem = {};
+    this.processService.getAllProcesses()
+       .subscribe(value => this.process_Model  = value);
   }
 
-  onDelete(index: number) {
-    this.process_List.splice(index, 1);
+  updateProcess(processType, name, runmode, sharedObject, version, processId){
+    console.log(processType, name, runmode, sharedObject, version);
+    this.processModel.abbotProcessSteps = [];
+    this.userRole.id = 1;
+    this.createUserModifiedBy.abbotUserRole = this.userRole;
+    this.createUserModifiedBy.authorities = ["ROLE_ADMIN"];
+    this.createUserModifiedBy.userid = 1;
+    this.processModel.createdBy = this.createUserModifiedBy;
+    this.processModel.lastModifiedBy = this.createUserModifiedBy;
+    this.processModel.name = name;
+    this.processModel.processId = processId;
+    this.processModel.processType = processType; 
+    this.processModel.runmode = runmode;
+    this.processModel.sharedObject = sharedObject;
+    this.processModel.version = version;
+    this.processService.updateProcess(this.processModel).subscribe(
+        data =>{
+            //Refresh List
+            this.getAllProcesses();
+         },
+        error => {
+              console.error("Error Updating Process");
+              },
+        () =>{
+          alert('Update Process - now completed.');
+          this.getAllProcesses();
+        });
   }
+  deleteProcess(index, processId){
+    this.processService.deleteProcess(3).subscribe(
+        data => { 
+         alert('Process successfully Deleted');
+         this.getAllProcesses();
+      }, error => {
+        //console.log('FAILED to Delete Process');
+      },() =>{
+        this.getAllProcesses();
+      });
+   }
 
   onCancel() {
     this.showNew = false;
   }
 
+<<<<<<< HEAD
 
   getProcesses(){
 
@@ -175,4 +297,21 @@ err => {
 ngOnInit() {
    }
 
+=======
+    ngOnInit() {
+    this.getAllProcesses();
+  //   this.processForm = new FormGroup({
+  //     processType: new FormControl(),
+  //     name: new FormControl(),
+  //     sharedObject: new FormControl(),
+  //     version: new FormControl(),
+  //     createdDate: new FormControl(),
+  //     description: new FormControl(),
+  //     lastModifiedDate: new FormControl(),
+  //     runmode: new FormControl(),
+  //     createdUserId: new FormControl(),
+  //     lastModifiedByUserId: new FormControl()
+  // });
+    }
+>>>>>>> master
 }

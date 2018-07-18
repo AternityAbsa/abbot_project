@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import {Http, Headers, Response,RequestMethod, RequestOptions, RequestOptionsArgs} from '@angular/http';
+import {Http, Headers, Response} from '@angular/http';
 import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/Rx';
@@ -49,8 +48,8 @@ export class UserManagementService {
         });  
      }
 
-     public createUser(): Observable<any[]>{
-        return this.http.post(BASE_PATH + ABBOT_USER_MANAGEMENT_API,  { headers: this.headers})
+     public createUser(userModel: UserManagementModel){
+        return this.http.post(BASE_PATH + ABBOT_USER_MANAGEMENT_API, JSON.stringify(userModel),  { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -63,8 +62,8 @@ export class UserManagementService {
         });  
      }
 
-     updateProcess(){
-        return this.http.put(BASE_PATH + ABBOT_USER_MANAGEMENT_API,  { headers: this.headers})
+     updateUser(userModel: UserManagementModel){
+        return this.http.put(BASE_PATH + ABBOT_USER_MANAGEMENT_API, JSON.stringify(userModel), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;
@@ -77,6 +76,24 @@ export class UserManagementService {
         }) 
         .catch(this.handleError);
      }
+
+     deleteUser(userId: number){
+         console.log(userId);
+        return this.http.delete(BASE_PATH + ABBOT_USER_MANAGEMENT_API + userId, { headers: this.headers})
+        .map((response: Response) => {
+            if (response.status === 204) {
+                return undefined;
+            } else if (response.status === 500) {
+                return null;
+            }else {
+               
+                return response.json();      
+            }
+        }) 
+        .catch(this.handleError);
+    }
+
+
 
     /**
      * Add a new Applications
