@@ -26,6 +26,7 @@ showConfirm: boolean=false;
 results: Object;
 searchTerm$ = new Subject<string>();
 color:string = 'red';
+path:any = "src/assets/logo.png";
 
 constructor(private controlRoomService: ControlRoomService,
             private confirmationService: ConfirmationService) {
