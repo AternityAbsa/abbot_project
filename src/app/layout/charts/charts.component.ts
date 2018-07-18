@@ -1,5 +1,12 @@
 import { Component, OnInit , ViewEncapsulation} from '@angular/core';
 import { routerTransition } from '../../router.animations';
+<<<<<<< HEAD
+import { Router, NavigationEnd } from '@angular/router';
+import { ProcessesService } from '../../services/ProcessesServices';
+import 'rxjs/add/operator/map';
+import { ProcessModel } from '../../models/ProcessModel';
+import { Observable } from 'rxjs/Observable';
+=======
 import { Router, Params } from '@angular/router';
 import { ProcessesService} from '../../services/ProcessesServices';
 import 'rxjs/add/operator/map';
@@ -7,14 +14,21 @@ import { ProcessModel, CreatedByOrLastModifiedBy, AbbotUserRole } from '../../mo
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable'; 
+>>>>>>> master
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 class ProcessList {
+<<<<<<< HEAD
+    Value: string;
+    constructor(public processId: string = '', public processName: string = '', public description: string = '',
+    public version: string = '', public status: string = null,public timestamp: string = '', Value: string)
+=======
     Value: string;   
     constructor(  public processId: string = '', public name: string = '', public description: string = '', 
                   public version: string = '', public status: string = null, public runmode: number = 0, Value: string,
                   public sharedObject: number = 0, public createdBy : string ='', public processType: string=''
           ) 
+>>>>>>> master
     {
         this.Value = Value;
         this.processId = processId;
@@ -48,6 +62,12 @@ class ProcessList {
 })
 
 export class ChartsComponent implements OnInit {
+<<<<<<< HEAD
+
+    Value: string;
+    updatedItem;
+    newItem: any = {};
+=======
     processForm: FormGroup;
     modalRef: NgbModalRef;
     process : ProcessModel = new ProcessModel();
@@ -55,12 +75,18 @@ export class ChartsComponent implements OnInit {
     Value: string;  
     updatedItem;  
     newItem: {};
+>>>>>>> master
     editIndex = null;
     rowDetails:Array<object>;
     editRow : boolean;
     updateIndex : number;
+<<<<<<< HEAD
+    process_List: ProcessList[] = new Array();
+    process_Model: ProcessList;
+=======
     process_List: ProcessList[]; 
     process_Model: ProcessList[];
+>>>>>>> master
     showNew: Boolean = false;
     // It will be either 'Save' or 'Update' based on operation.
     submitType: string = 'Save';
@@ -131,6 +157,13 @@ export class ChartsComponent implements OnInit {
 
   }
 
+<<<<<<< HEAD
+onEdit(i: number){
+    this.newItem.Value = this.process_List[i].Value;
+    this.updatedItem = i;
+    this.showNew = true;
+}
+=======
   createNewProcess(content){
     // Opens The Modal Form to add new Process
     this.modalRef  = this.modalService.open(content, { size: 'lg' });
@@ -141,13 +174,18 @@ export class ChartsComponent implements OnInit {
     this.modalRef.close();
     this.modalService.open(content1, { size: 'lg' });
    }
+>>>>>>> master
 
    editProcess(content2){
     // Opens The Modal Form to Edit Processes
     this.modalService.open(content2, { size: 'lg' });
    }
 
+<<<<<<< HEAD
+    let data = this.updatedItem;
+=======
   getAllProcesses(){
+>>>>>>> master
 
     this.processService.getAllProcesses()
        .subscribe(value => this.process_Model  = value);
@@ -197,6 +235,69 @@ export class ChartsComponent implements OnInit {
     this.showNew = false;
   }
 
+<<<<<<< HEAD
+
+  getProcesses(){
+
+    this.processService.getAllProcesses().subscribe((process)=>{
+        console.log(process);
+        this.process_List = process;
+    }, (error)=>{
+        console.log(error);
+    });
+  }
+
+  getProcess(id:Number){
+
+
+}
+
+  updateProcess(process){
+    this.processService.setter(process);
+    this.router.navigate(['/forms']);
+  }
+
+  deleteProcess(process){
+    this.processService.deleteProcess(process.id).subscribe((data)=>{
+        this.process_List.splice(this.process_List.indexOf(process), 1);
+    }, (error)=>{
+        console.log(error)
+    });
+    }
+
+
+  createNewProcess(){
+    let process = new ProcessModel;
+    this.processService.setter(process);
+    this.router.navigate(['/forms']);
+  }
+
+
+/**Loading rest api service */
+loadProcesses(){
+    this.processService.getAllProcesses().subscribe(
+        processes => {
+       // this.processModel.processId = processes['value'].map(processes => processes.processId);
+       // this.processModel.processName = processes['value'].map(processes => processes.processName);
+        //this.processModel.description = processes['value'].map(processes => processes.description);
+       // this.processModel.version = processes['value'].map(processes => processes.version);
+        //this.processModel.processStatus = processes['value'].map(processes => processes.processStatus);
+        //this.process = processes;
+
+    },
+);
+err => {
+    console.log(err);
+    }
+
+    return this.process;
+}
+
+
+ngOnInit() {
+   }
+
+=======
     ngOnInit() {
     this.getAllProcesses();
   //   this.processForm = new FormGroup({
@@ -212,4 +313,5 @@ export class ChartsComponent implements OnInit {
   //     lastModifiedByUserId: new FormControl()
   // });
     }
+>>>>>>> master
 }

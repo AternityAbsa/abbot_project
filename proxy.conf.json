@@ -1,9 +1,9 @@
 {
-  "/odata": {
+  "/abbot": {
     "target": "http://localhost:8080",
     "secure": true,
     "pathRewrite": {
-    "^/odata": ""
+    "^/abbot": ""
   },
     "changeOrigin": true
   }

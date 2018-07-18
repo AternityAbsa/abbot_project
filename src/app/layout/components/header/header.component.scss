@@ -34,5 +34,16 @@ $topnav-background-color: #B20000;
                 margin: 0;
             }
         }
+
+    }
+     .user-avatar {
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      background-color: white;
+
+    }
+    .logo_home{
+       height: 100%;
     }
 }

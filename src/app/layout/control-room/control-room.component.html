@@ -1,0 +1,239 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<section class="main-container" style="padding-top: 60px;padding-right: 50px;padding-bottom: 50px;padding-left: 20px;">
+    <router-outlet></router-outlet>
+    <app-page-header [heading]="'Control Room'"></app-page-header>
+
+
+    <div class="ui-g">
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-4">
+            <h4>&nbsp;Processes</h4>
+            <div class="div1" align="left">
+                <div align="left">
+                    <br/>&nbsp;&nbsp;&nbsp;Search
+                    <input placeholder="&nbsp;&nbsp;process groups"
+                        (keyup)="searchTerm$.next($event.target.value)">
+
+                    <ul *ngIf="results">
+                        <li *ngFor="let result of results | slice:0:9">
+                            <a href="{{ result.latest }}" target="_blank">
+                                {{ result.name }}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <hr/>
+                    <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}">
+                        <ul class="list">
+                            <li >
+                                <img id="drag1"  src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_PAYMENTS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_HOME_LOANS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1"  src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_PAYMENTS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_HOME_LOANS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1"  src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_PAYMENTS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_HOME_LOANS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1"  src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_PAYMENTS_UAT</span></a>
+                            </li>
+                            <li>
+                                <img id="drag1" src="/assets/abbot_process.png" draggable="true" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a href="#"><span [ngClass]="color" (mouseoverup)="envelope($event)" (mousedown)="envelope($event)" style="color:green;">DUMMY_ABBOT_PROCESS_HOME_LOANS_UAT</span></a>
+                            </li>
+                        </ul>
+
+                    </p-scrollPanel>
+
+                </div>
+            </div>
+
+            <br>
+
+        </div>
+
+        <div class="ui-g-3">
+            <p align="center" style="color:blue;">Drag and Drop</p>
+        </div>
+        <div class="ui-g-4">
+            <h4 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources</h4>
+            <div class="div1" >
+                <div align="left">
+                    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search
+                    <input  placeholder="&nbsp;&nbsp;resource groups"
+                        (keyup)="searchTerm$.next($event.target.value)">
+
+                    <ul *ngIf="results">
+                        <li *ngFor="let result of results | slice:0:9">
+                            <a href="{{ result.latest }}" target="_blank">
+                                {{ result.name }}
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <hr/>
+                <ul class="list">
+                    <!--<li *ngFor="let result of results">-->
+                        <!--<div class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">-->
+                            <!--<img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">-->
+                            <!--<a href="#" target="_blank">-->
+                             <!--{{ result.name }}-->
+                             <!--</a>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}" >
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.64</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.70</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource_off.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.110</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.64</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource_off.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.70</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.110</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource_off.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.64</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.70</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.110</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.64</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                &nbsp;<a  href="#">192.225.335.70</a>
+                            </div>
+                        </li>
+                        <li align="left">
+                            <div align="left" ondrop="drop(event)" ondragover="allowDrop(event)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/assets/abbot_resource.png" draggable="false" ondragstart="drag(event)" width="20" height="20">
+                                <a  href="#">192.225.335.110</a>
+                            </div>
+                        </li>
+                    </p-scrollPanel>
+
+                </ul>
+            </div>
+            <br>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
+    &nbsp;&nbsp;&nbsp;Queue Item Management
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Queue Item</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let qItem of queueItems; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{qItem.name}}</td>
+            <td>{{qItem.status}}</td>
+
+        </tr>
+        <tr>
+            <td>100250</td>
+            <td>PAYMENTS:192.225.335.70:2018-05-01 15:48</td>
+            <td><span style="color:orange;">Pending</span></td>
+        </tr>
+        <tr>
+            <td>100251</td>
+            <td>HOMELOANS:192.225.335.70:2018-05-01 15:48</td>
+            <td><span style="color:orange;">Pending</span></td>
+        </tr>
+        <tr>
+            <td>100252</td>
+            <td>PAYMENTS:192.225.335.70:2018-05-01 15:48</td>
+            <td><span style="color:green;">Complete</span> </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+

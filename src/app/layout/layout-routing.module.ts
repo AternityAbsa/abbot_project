@@ -19,8 +19,12 @@ const routes: Routes = [
             { path: 'action-management', loadChildren: './action-management/action-management.module#ActionManagementModule' },
             { path: 'grid', loadChildren: './grid/grid.module#GridModule' },
             { path: 'components', loadChildren: './bs-component/bs-component.module#BsComponentModule' },
+<<<<<<< HEAD
+            { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
+=======
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },          
             { path: 'app-add-user-form', loadChildren: './add-user-form/add-user-form.module#AddUserFormModule' }
+>>>>>>> master
         ]
     }
 ];
