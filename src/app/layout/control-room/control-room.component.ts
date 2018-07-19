@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ControlRoomService } from '../../services/ControlRoomService';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
@@ -9,6 +9,7 @@ import { routerTransition } from './../../router.animations';
 import { TreeNode } from 'primeng/primeng';
 import {ConfirmationService} from 'primeng/api';
 import { Subject } from 'rxjs/Subject';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-control-room',
@@ -58,8 +59,7 @@ ngOnInit() {
 
 }
 
-envelope(event: MouseEvent) {
-  this.color = event.type == 'mouseover' ? 'yellow' : 'red';
-}
+envelope(){
 
+}
 }

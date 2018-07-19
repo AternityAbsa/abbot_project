@@ -14,6 +14,7 @@ import { TreeNode } from 'primeng/primeng';
 export class ControlRoomService {
 
     private queryUrl: string = '?search=';
+    public confirm: boolean;
     private headers = new Headers({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + this.authenticationService.getToken()
