@@ -37,16 +37,15 @@
     function onHover() {
 
     }
-    function createQueueItem(event, resourceName, processName ) {
-         let resourceName = event.dataTransfer.getData('resourceName');
-         let processName = event.dataTransfer.getData('processName');
-         let param= processName + ',', + resourceName;
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:8080/abbot/abbot-work-queue-item-management/param", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send();
-        var response = JSON.parse(xhttp.responseText);
+   function createQueueItem(event, resourceName, processName ) {
+    let resourceName = event.dataTransfer.getData('resourceName');
+    let processName = event.dataTransfer.getData('processName');
+    let param= processName + ',', + resourceName;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "http://localhost:8080/abbot/abbot-work-queue-item-management/param", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
     }
 </script>
     </head>
