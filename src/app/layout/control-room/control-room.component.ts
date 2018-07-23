@@ -13,8 +13,6 @@ import {FormGroup} from '@angular/forms';
 import {AbbotResource} from '../../models/AbbotResource';
 import {AbbotProcess} from '../../models/AbbotProcess';
 import {AbbotWorkQueueItem} from '../../models/AbbotWorkQueueItem';
-import {MatTableDataSource} from '@angular/material';
-import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-control-room',
@@ -25,10 +23,8 @@ import { MatStepper } from '@angular/material';
 
 })
 export class ControlRoomComponent implements OnInit{
-    @ViewChild('stepper') stepper;
     displayedColumns:any[]=[];
     dataSource:any[]=[];
-    rows: new MatTableDataSource<AbbotWorkQueueItem>();
     resources: any[] = [];
     resourceGroups: any[] = [];
     processes: any[] = [];
@@ -49,9 +45,6 @@ export class ControlRoomComponent implements OnInit{
 
       this.controlRoomService.getAllQueueItems().subscribe((data: AbbotWorkQueueItem[]) => {
         this.queueItems.push(data);
-        this.rows.push(this.queueItems[0]);
-        this.displayedColumns = ['position', 'firstName', 'lastName', 'email'];
-        this.dataSource = new MatTableDataSource(this.rows)
       });
 
         this.controlRoomService.getAllResources().subscribe( (data: AbbotResource[])=> {
@@ -67,8 +60,9 @@ export class ControlRoomComponent implements OnInit{
     ngOnInit() {}
 
     drag(event:DragEvent,processName:string) {
-    localStorage.setItem('processName', processName);
+      localStorage.setItem('processName', processName);
      }
+
     allowDrop(event) {
       event.preventDefault();
 
@@ -85,9 +79,6 @@ export class ControlRoomComponent implements OnInit{
 
     createQueueItem(resourceName:string, processName:string ) {
       this.controlRoomService.createQueueItem(resourceName,processName);
-    }
-  changeStep(index: number) {
-        this.stepper.selectedIndex = index;
     }
 
 }

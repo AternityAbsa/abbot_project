@@ -38,7 +38,6 @@ import { FormsModule }  from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import {MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 export function createTranslateLoader(http: HttpClient) {
@@ -58,7 +57,6 @@ export function createTranslateLoader(http: HttpClient) {
         FormsModule,
         ConfirmDialogModule,
         CarouselModule,
-        CustomMaterialModule,
         DataTableModule.forRoot(),
         TreeModule,
         PaginatorModule,
