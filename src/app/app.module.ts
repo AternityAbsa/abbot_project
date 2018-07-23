@@ -39,6 +39,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { MatPaginatorModule } from '@angular/material';
 import {MatButtonModule,MatStepperModule,
 MatCardModule,
 MatProgressSpinnerModule,

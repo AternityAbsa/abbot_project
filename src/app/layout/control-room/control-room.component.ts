@@ -25,8 +25,10 @@ import { DataSource } from '@angular/cdk/table';
 
 })
 export class ControlRoomComponent implements OnInit{
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+
     displayedColumns = ['id', 'process name', 'resource name','loaded','status'];
     columnNames = [{
         id: "id",
@@ -61,12 +63,10 @@ export class ControlRoomComponent implements OnInit{
     path:any = "src/assets/logo.png";
 
     constructor(private controlRoomService: ControlRoomService) {
-
        this.controlRoomService.getAllResourceGroups().subscribe((data: AbbotResourceGroup[])=> {
           this.resourceGroups.push(data);
 
         });
-
 
         this.controlRoomService.getAllResources().subscribe( (data: AbbotResource[])=> {
            this.resources.push(data);
@@ -78,10 +78,30 @@ export class ControlRoomComponent implements OnInit{
 
         });
     }
+
      ngOnInit() {
         this.displayedColumns = this.columnNames.map(x => x.id);
         this.createTable();
       }
+
+      ngAfterViewInit() {
+
+      }
+
+      applyFilter(filterValue: string) {
+        filterValue = filterValue.trim();
+        filterValue = filterValue.toLowerCase();
+        this.dataSource.filter = filterValue;
+      }
+
+     createTable() {
+         this.controlRoomService.getAllQueueItems().subscribe((data: any[]) => {
+             this.queueItems.push(data);
+             this.dataSource = new MatTableDataSource(this.queueItems);
+             this.dataSource.sort = this.sort;
+             this.dataSource.paginator = this.paginator;
+      });
+    }
 
     drag(event:DragEvent,processName:string) {
       localStorage.setItem('processName', processName);
@@ -93,7 +113,7 @@ export class ControlRoomComponent implements OnInit{
     }
 
     drop(event:DragEvent, resourceName:string) {
-       confirm('assign process to resource?')
+       confirm('Are you sure you want to assign this process to the selected resource?')
        let processName:string =localStorage.getItem('processName');
        this.createQueueItem(resourceName, processName);
         this.controlRoomService.getAllQueueItems().subscribe( (data: any)=> {
@@ -104,24 +124,4 @@ export class ControlRoomComponent implements OnInit{
     createQueueItem(resourceName:string, processName:string ) {
       this.controlRoomService.createQueueItem(resourceName,processName);
     }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
-  }
-
- createTable() {
-         this.controlRoomService.getAllQueueItems().subscribe((data: AbbotWorkQueueItem[]) => {
-         this.queueItems.push(data);
-         this.dataSource = new MatTableDataSource(this.queueItems);
-         this.dataSource.sort = this.sort;
-      });
-      }
-
 }

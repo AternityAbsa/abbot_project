@@ -64,7 +64,7 @@ export class ControlRoomService {
         });
      }
 
-  public getAllQueueItems(): Observable<AbbotWorkQueueItem[]>{
+  public getAllQueueItems(): Observable<any[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-work-queue-item-management",{headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {

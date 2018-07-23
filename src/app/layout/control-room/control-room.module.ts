@@ -26,6 +26,7 @@ MatSelectModule,
 MatSortModule,
 MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import { MatPaginatorModule } from '@angular/material';
 
 @NgModule({
     imports: [CommonModule,ControlRoomRoutingModule,
@@ -33,6 +34,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
+    MatPaginatorModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
