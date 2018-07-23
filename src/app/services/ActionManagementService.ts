@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Http, Headers, Response,RequestMethod, RequestOptions, RequestOptionsArgs} from '@angular/http';
 import * as models from '../models/models';
-import { Observable } from 'rxjs/Observable'; 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { AuthModel } from '../models/models';
-import { UserManagementModel } from '../models/UserManagementModel';
+import { AbbotUser } from '../models/AbbotUser';
 import{ AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_ACTION_MANAGEMENT_API } from '../services/services';
 
@@ -33,9 +33,9 @@ export class ActionManagementService {
     // public defaultHeaders: Headers = new Headers();
     // private options = new RequestOptions ({headers:this.defaultHeaders})
 
-   
+
     /**
-     * get AbBot Auth Service 
+     * get AbBot Auth Service
      *
      * @param body AbBot Auth Service to add
      */
@@ -49,12 +49,12 @@ export class ActionManagementService {
                 return null;
             }else {
                 console.log(response.json());
-                return response.json();      
+                return response.json();
             }
-        });  
+        });
      }
 
-     public createAction(user: UserManagementModel): Observable<any[]>{
+     public createAction(user: AbbotUser): Observable<any[]>{
         return this.http.post(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(user))
         .map((response: Response) => {
             if (response.status === 204) {
@@ -62,13 +62,13 @@ export class ActionManagementService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        });  
+        });
      }
 
-     updateUpdate(user: UserManagementModel){
+     updateUpdate(user: AbbotUser){
         return this.http.put(BASE_PATH + ABBOT_ACTION_MANAGEMENT_API, JSON.stringify(user))
         .map((response: Response) => {
             if (response.status === 204) {
@@ -76,10 +76,10 @@ export class ActionManagementService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
      }
 
@@ -91,10 +91,10 @@ export class ActionManagementService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
     }
 
@@ -105,16 +105,16 @@ export class ActionManagementService {
      *
      * @param body Application to add
      */
-    
+
     private extractData(res: Response) {
-        let body = res.json() as models.ProcessModel[];
-        console.log(body); 
-        return body || { }; 
-    } 
-       
+        let body = res.json() as models.AbbotProcess[];
+        console.log(body);
+        return body || { };
+    }
+
        private handleError(error: Response){
 
         return Observable.throw (error.statusText);
-        
+
        }
 }

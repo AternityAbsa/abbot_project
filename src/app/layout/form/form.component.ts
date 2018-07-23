@@ -3,7 +3,7 @@ import { routerTransition } from '../../router.animations';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import {ProcessesService} from '../../services/ProcessesServices';
 import 'rxjs/add/operator/map';
-import { ProcessModel } from '../../models/ProcessModel';
+import { AbbotProcess } from '../../models/AbbotProcess';
 
 class ProcessList {
     constructor(
@@ -24,7 +24,7 @@ class ProcessList {
 })
 export class FormComponent implements OnInit {
 
-    //use actionName from ProcessModel to populate list of steps from DB.
+    //use actionName from AbbotProcess to populate list of steps from DB.
     private actions: string[] = [
         'open app',
         'enter text',
@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
     private process : any[];
 
 
-    constructor(private processService : ProcessesService, private processModel : ProcessModel) {
+    constructor(private processService : ProcessesService, private processModel : AbbotProcess) {
         this.process_List.push(new ProcessList('1', 'cif search', 'A', '14h00', 'abmg101', 'test01'));
         }
 

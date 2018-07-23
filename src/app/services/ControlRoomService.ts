@@ -5,10 +5,13 @@ import {Http, Headers, Response,RequestMethod, RequestOptions, RequestOptionsArg
 import * as models from '../models/models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { ResourceGroupModel } from '../models/ResourceGroupModel';
 import { BASE_PATH, ABBOT_RESOURCE_GROUP_MANAGEMENT_API } from '../services/services';
 import{ AuthService } from '../services/AuthService';
 import { TreeNode } from 'primeng/primeng';
+import {AbbotWorkQueueItem} from '../models/AbbotWorkQueueItem';
+import {AbbotProcess} from '../models/AbbotProcess';
+import {AbbotResource} from '../models/AbbotResource';
+import {AbbotResourceGroup} from '../models/AbbotResourceGroup';
 
 @Injectable()
 export class ControlRoomService {
@@ -27,9 +30,24 @@ export class ControlRoomService {
          .switchMap(term => this.searchEntries(term));
       }
 
+   createQueueItem(resourceName: string, processName:string){
+      let param:string =resourceName + ',' + processName;
+       return this.http.post("http://localhost:8080/abbot/abbot-work-queue-item-management/assigned/" + resourceName +'/'+ resourceName , {headers: this.headers})
+           .subscribe(
+            res => {
+              console.log(res);
+            },
+            err => {
+              console.log("Error occured");
+            }
+          );
+     }
+
+
+
      searchEntries(term) {
         return this.http
-            .get("http://localhost:8080/" + this.queryUrl + term)
+            .get("http://localhost:8080/" + this.queryUrl + term,{headers: this.headers})
             .map(res => res.json());
       }
 
@@ -46,7 +64,7 @@ export class ControlRoomService {
         });
      }
 
-  public getAllQueueItems(): Observable<any[]>{
+  public getAllQueueItems(): Observable<AbbotWorkQueueItem[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-work-queue-item-management",{headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -59,7 +77,7 @@ export class ControlRoomService {
         });
      }
 
-    public getAllResources(): Observable<any[]>{
+    public getAllResources(): Observable<AbbotResource[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-resource-management",{headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -72,7 +90,7 @@ export class ControlRoomService {
         });
      }
 
-     public getAllProcesses(): Observable<any[]>{
+     public getAllProcesses(): Observable<AbbotProcess[]>{
             return this.http.get("http://localhost:8080/abbot/abbot-process-management",{headers: this.headers})
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -86,7 +104,7 @@ export class ControlRoomService {
          }
 
 
-     public getResourceGroupModel(id:Number){
+     public getAbbotResourceGroup(id:Number){
 
      }
 
@@ -96,15 +114,15 @@ export class ControlRoomService {
                     .then(res => <TreeNode[]> res.json().data);
     }
 
-     createResourceGroupModel(resourceGroupModel: ResourceGroupModel){
+     createAbbotResourceGroup(resourceGroupModel: AbbotResourceGroup){
 
      }
 
-     updateResourceGroupModel(resourceGroupModel: ResourceGroupModel){
+     updateAbbotResourceGroup(resourceGroupModel: AbbotResourceGroup){
 
      }
 
-     deleteResourceGroupModel(id:number){
+     deleteAbbotResourceGroup(id:number){
 
     }
 

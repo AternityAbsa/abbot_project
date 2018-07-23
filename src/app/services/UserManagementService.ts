@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Http, Headers, Response,RequestMethod, RequestOptions, RequestOptionsArgs} from '@angular/http';
 import * as models from '../models/models';
-import { Observable } from 'rxjs/Observable'; 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { AuthModel } from '../models/models';
-import { UserManagementModel } from '../models/UserManagementModel';
+import { AbbotUser } from '../models/AbbotUser';
 import{ AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_USER_MANAGEMENT_API } from '../services/services';
 
@@ -30,7 +30,7 @@ export class UserManagementService {
     public applications: Array<AuthModel>;
 
     /**
-     * get AbBot Auth Service 
+     * get AbBot Auth Service
      *
      * @param body AbBot Auth Service to add
      */
@@ -44,9 +44,9 @@ export class UserManagementService {
                 return null;
             }else {
                 console.log(response.json());
-                return response.json();      
+                return response.json();
             }
-        });  
+        });
      }
 
      public createUser(): Observable<any[]>{
@@ -57,10 +57,10 @@ export class UserManagementService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        });  
+        });
      }
 
      updateProcess(){
@@ -71,10 +71,10 @@ export class UserManagementService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
      }
 
@@ -83,16 +83,16 @@ export class UserManagementService {
      *
      * @param body Application to add
      */
-    
+
     private extractData(res: Response) {
-        let body = res.json() as models.ProcessModel[];
-        console.log(body); 
-        return body || { }; 
-    } 
-       
+        let body = res.json() as models.AbbotProcess[];
+        console.log(body);
+        return body || { };
+    }
+
        private handleError(error: Response){
 
         return Observable.throw (error.statusText);
-        
+
        }
 }

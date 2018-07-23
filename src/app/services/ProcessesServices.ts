@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Http, Headers, Response,RequestMethod, RequestOptions, RequestOptionsArgs} from '@angular/http';
 import * as models from '../models/models';
-import { Observable } from 'rxjs/Observable'; 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { ProcessModel } from '../models/models';
+import { AbbotProcess } from '../models/models';
 import{ AuthService } from '../services/AuthService';
 import { BASE_PATH, ABBOT_PROCESS_MANAGEMENT_API } from '../services/services';
 
@@ -13,10 +13,10 @@ import { BASE_PATH, ABBOT_PROCESS_MANAGEMENT_API } from '../services/services';
 @Injectable()
 export class ProcessesService {
 
-    public processes: Array<ProcessModel>;
-    private process: ProcessModel;
+    public processes: Array<AbbotProcess>;
+    private process: AbbotProcess;
 
-    public applications: Array<ProcessModel>;
+    public applications: Array<AbbotProcess>;
     private headers = new Headers({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.authenticationService.getToken()
@@ -26,7 +26,7 @@ export class ProcessesService {
 
 
     /**
-     * get AbBot Processes 
+     * get AbBot Processes
      *
      * @param body AbBot Processes to add
      */
@@ -39,10 +39,10 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        });  
+        });
      }
 
      public getProcess(id:Number){
@@ -53,14 +53,14 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        });  
+        });
      }
 
 
-     createProcess(process: ProcessModel){
+     createProcess(process: AbbotProcess){
         return this.http.post(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API, JSON.stringify(process), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -68,14 +68,14 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
      }
 
-     updateProcess(process: ProcessModel){
+     updateProcess(process: AbbotProcess){
         return this.http.put(BASE_PATH + ABBOT_PROCESS_MANAGEMENT_API, JSON.stringify(process), { headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
@@ -83,10 +83,10 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
      }
 
@@ -98,10 +98,10 @@ export class ProcessesService {
             } else if (response.status === 500) {
                 return null;
             }else {
-               
-                return response.json();      
+
+                return response.json();
             }
-        }) 
+        })
         .catch(this.handleError);
     }
 
@@ -122,18 +122,18 @@ export class ProcessesService {
     }
 
     private extractData(res: Response) {
-        let body = res.json() as models.ProcessModel[];
-        console.log(body); 
-        return body || { }; 
-    } 
-       
+        let body = res.json() as models.AbbotProcess[];
+        console.log(body);
+        return body || { };
+    }
+
        private handleError(error: Response){
 
         return Observable.throw (error.statusText);
-        
+
        }
 
-       setter(process: ProcessModel){
+       setter(process: AbbotProcess){
            this.process = process;
        }
 

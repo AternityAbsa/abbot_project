@@ -1,6 +1,6 @@
 import * as models from '../models/models';
 
-export class ResourceGroupModel  {
+export class AbbotResourceGroup  {
     name : string;
     id : number;
 }

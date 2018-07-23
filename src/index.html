@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="node_modules/primeng/resources/primeng.min.css" />
         <link rel="stylesheet" type="text/css" href="/node_modules/primeicons/primeicons.css" />
         <link rel="stylesheet" href="node_modules/@angular/material/core/theming/prebuilt/indigo-pink.css">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <style>
 .div1, .div2 {
     width: 500px;
@@ -24,29 +25,8 @@
 
 </style>
         <script>
-    function drag(event, data) {
-        event.dataTransfer.setData('processName', data);
-    }
-    function allowDrop(event) {
-        event.preventDefault();
-    }
-    function drop(event, resourceName) {
-        console.log(resourceName)
-        console.log(event.dataTransfer.getData('processName')
-     }
-    function onHover() {
 
-    }
-   function createQueueItem(event, resourceName, processName ) {
-    let resourceName = event.dataTransfer.getData('resourceName');
-    let processName = event.dataTransfer.getData('processName');
-    let param= processName + ',', + resourceName;
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "http://localhost:8080/abbot/abbot-work-queue-item-management/param", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
-    var response = JSON.parse(xhttp.responseText);
-    }
+
 </script>
     </head>
     <body style="background:white">
@@ -58,6 +38,4 @@
             </div>
         </app-root>
     </body>
-
-
 </html>
