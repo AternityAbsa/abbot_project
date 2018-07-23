@@ -39,7 +39,19 @@ import {CarouselModule} from 'primeng/carousel';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import {MatButtonModule,MatStepperModule,
+MatCardModule,
+MatProgressSpinnerModule,
+MatMenuModule,
+MatIconModule,
+MatToolbarModule,
+MatSelectModule,
+MatSortModule,
+MatTableModule,
+MatInputModule,
+MatCheckboxModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
+import {CdkTableModule} from '@angular/cdk/table';
 export function createTranslateLoader(http: HttpClient) {
     // for development
     // return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
@@ -55,6 +67,19 @@ export function createTranslateLoader(http: HttpClient) {
         TabViewModule,
         DragDropModule,
         FormsModule,
+        CdkTableModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatSortModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
         ConfirmDialogModule,
         CarouselModule,
         DataTableModule.forRoot(),
@@ -62,6 +87,7 @@ export function createTranslateLoader(http: HttpClient) {
         PaginatorModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        MatStepperModule,
         NgbModule.forRoot(),
         TranslateModule.forRoot({
             loader: {

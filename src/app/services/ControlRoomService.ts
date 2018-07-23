@@ -90,7 +90,7 @@ export class ControlRoomService {
         });
      }
 
-     public getAllProcesses(): Observable<AbbotProcess[]>{
+     public getAllProcesses(): Observable<Array<AbbotProcess>>{
             return this.http.get("http://localhost:8080/abbot/abbot-process-management",{headers: this.headers})
             .map((response: Response) => {
                 if (response.status === 204) {

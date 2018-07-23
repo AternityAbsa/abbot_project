@@ -6,7 +6,7 @@ import { AbbotElementType } from './AbbotElementType';
 export class AbbotProcess  {
     processId : string;
     processType : string;
-    processName : string;
+    name : string;
     processStatus : string;
     description : string;
     version : string;

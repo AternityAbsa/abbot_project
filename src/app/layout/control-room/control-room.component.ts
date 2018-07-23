@@ -13,6 +13,8 @@ import {FormGroup} from '@angular/forms';
 import {AbbotResource} from '../../models/AbbotResource';
 import {AbbotProcess} from '../../models/AbbotProcess';
 import {AbbotWorkQueueItem} from '../../models/AbbotWorkQueueItem';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-control-room',
@@ -23,11 +25,33 @@ import {AbbotWorkQueueItem} from '../../models/AbbotWorkQueueItem';
 
 })
 export class ControlRoomComponent implements OnInit{
-    displayedColumns:any[]=[];
-    dataSource:any[]=[];
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+    displayedColumns = ['id', 'process name', 'resource name','loaded','status'];
+    columnNames = [{
+        id: "id",
+        value: "id."
+
+      }, {
+        id: "processName",
+        value: "process name"
+      },
+      {
+        id: "resourceName",
+        value: "resource name"
+      },
+      {
+        id: "loaded",
+        value: "loaded"
+      },
+       {
+        id: "status",
+        value: "status"
+      }];
+    dataSource: MatTableDataSource<AbbotWorkQueueItem>;
     resources: any[] = [];
     resourceGroups: any[] = [];
-    processes: any[] = [];
+    processes: Array<AbbotProcess> = [];
     queueItems: any[]=[];
     files: TreeNode[] = [];
     showConfirm: boolean=false;
@@ -43,21 +67,21 @@ export class ControlRoomComponent implements OnInit{
 
         });
 
-      this.controlRoomService.getAllQueueItems().subscribe((data: AbbotWorkQueueItem[]) => {
-        this.queueItems.push(data);
-      });
 
         this.controlRoomService.getAllResources().subscribe( (data: AbbotResource[])=> {
            this.resources.push(data);
 
         });
 
-        this.controlRoomService.getAllProcesses().subscribe( (data: AbbotProcess[])=> {
-           this.processes.push(data);
+        this.controlRoomService.getAllProcesses().subscribe( (data: Array<AbbotProcess>)=> {
+           this.processes=data;
 
         });
     }
-    ngOnInit() {}
+     ngOnInit() {
+        this.displayedColumns = this.columnNames.map(x => x.id);
+        this.createTable();
+      }
 
     drag(event:DragEvent,processName:string) {
       localStorage.setItem('processName', processName);
@@ -80,5 +104,24 @@ export class ControlRoomComponent implements OnInit{
     createQueueItem(resourceName:string, processName:string ) {
       this.controlRoomService.createQueueItem(resourceName,processName);
     }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+
+ createTable() {
+         this.controlRoomService.getAllQueueItems().subscribe((data: AbbotWorkQueueItem[]) => {
+         this.queueItems.push(data);
+         this.dataSource = new MatTableDataSource(this.queueItems);
+         this.dataSource.sort = this.sort;
+      });
+      }
 
 }
