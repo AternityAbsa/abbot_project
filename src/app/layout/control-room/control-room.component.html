@@ -73,56 +73,5 @@
     <br/>
     <br/>
     &nbsp;&nbsp;&nbsp;
-    <!--<ngx-datatable [columns]="columns" [rows]="rows"></ngx-datatable>-->
-    <mat-horizontal-stepper [linear]="true" #stepper>
-        <!-- Content here -->
-    </mat-horizontal-stepper>
-    <mat-table #queueItems [dataSource]="queueItems">
-
-        <ng-container matColumnDef="queueIdEnt">
-            <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="processName">
-            <mat-header-cell *matHeaderCellDef> Process Name</mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="loaded">
-            <mat-header-cell *matHeaderCellDef> Loaded </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="completed">
-            <mat-header-cell *matHeaderCellDef> Completed </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef=eException">
-            <mat-header-cell *matHeaderCellDef> Exception </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="defered">
-            <mat-header-cell *matHeaderCellDef> Defered </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="finished">
-            <mat-header-cell *matHeaderCellDef> Finished </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-            <mat-cell *matCellDef="let element">  </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
-
 
 </section>
