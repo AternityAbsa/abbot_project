@@ -1,4 +1,4 @@
-import { Component, OnInit, Input ,ViewChild } from '@angular/core';
+import { Component, OnInit, Input ,ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ControlRoomService } from '../../services/ControlRoomService';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
@@ -66,7 +66,7 @@ export class ControlRoomComponent implements OnInit{
     color:string = 'red';
     path:any = "src/assets/logo.png";
 
-    constructor(private controlRoomService: ControlRoomService,public dialog: MatDialog) {
+    constructor(private controlRoomService: ControlRoomService,public dialog: MatDialog,private changeDetectorRefs: ChangeDetectorRef) {
        this.controlRoomService.getAllResourceGroups().subscribe((data: AbbotResourceGroup[])=> {
           this.resourceGroups.push(data);
 
@@ -130,7 +130,10 @@ export class ControlRoomComponent implements OnInit{
     this.dialogRef.afterClosed().subscribe(result => {
       if(result) {
        this.createQueueItem(localStorage.getItem('resourceName'),localStorage.getItem('processName'));
-      }
+      // this.success('Queue Item has been created sucessfully');
+       this.createTable();
+       this.changeDetectorRefs.detectChanges();
+       }
       this.dialogRef = null;
     });
   }
@@ -138,4 +141,8 @@ export class ControlRoomComponent implements OnInit{
     createQueueItem(resourceName:string, processName:string ) {
       this.controlRoomService.createQueueItem(resourceName,processName);
     }
+
+//    success(message: string) {
+//       this.alertService.success(message);
+//    }
 }
