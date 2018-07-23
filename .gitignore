@@ -13,6 +13,7 @@ package-lock.json
 .project
 .classpath
 .c9/
+.history
 *.launch
 .settings/
 *.sublime-workspace

@@ -15,6 +15,8 @@ import {AbbotProcess} from '../../models/AbbotProcess';
 import {AbbotWorkQueueItem} from '../../models/AbbotWorkQueueItem';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
+import { ConfirmationDialog } from './confirmation-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-control-room',
@@ -31,7 +33,7 @@ export class ControlRoomComponent implements OnInit{
 
     displayedColumns = ['id', 'process name', 'resource name','loaded','status'];
     columnNames = [{
-        id: "id",
+        id: "queueIdEnt",
         value: "id."
 
       }, {
@@ -51,6 +53,8 @@ export class ControlRoomComponent implements OnInit{
         value: "status"
       }];
     dataSource: MatTableDataSource<AbbotWorkQueueItem>;
+    dialogRef: MatDialogRef<ConfirmationDialog>;
+
     resources: any[] = [];
     resourceGroups: any[] = [];
     processes: Array<AbbotProcess> = [];
@@ -62,7 +66,7 @@ export class ControlRoomComponent implements OnInit{
     color:string = 'red';
     path:any = "src/assets/logo.png";
 
-    constructor(private controlRoomService: ControlRoomService) {
+    constructor(private controlRoomService: ControlRoomService,public dialog: MatDialog) {
        this.controlRoomService.getAllResourceGroups().subscribe((data: AbbotResourceGroup[])=> {
           this.resourceGroups.push(data);
 
@@ -97,7 +101,7 @@ export class ControlRoomComponent implements OnInit{
      createTable() {
          this.controlRoomService.getAllQueueItems().subscribe((data: any[]) => {
              this.queueItems.push(data);
-             this.dataSource = new MatTableDataSource(this.queueItems);
+             this.dataSource = new MatTableDataSource(this.queueItems[0]);
              this.dataSource.sort = this.sort;
              this.dataSource.paginator = this.paginator;
       });
@@ -113,13 +117,23 @@ export class ControlRoomComponent implements OnInit{
     }
 
     drop(event:DragEvent, resourceName:string) {
-       confirm('Are you sure you want to assign this process to the selected resource?')
-       let processName:string =localStorage.getItem('processName');
-       this.createQueueItem(resourceName, processName);
-        this.controlRoomService.getAllQueueItems().subscribe( (data: any)=> {
-          this.queueItems=data;
-        });
+     this.openConfirmationDialog();
+     localStorage.setItem('resourceName', resourceName);
     }
+
+   openConfirmationDialog() {
+    this.dialogRef = this.dialog.open(ConfirmationDialog, {
+      disableClose: false
+    });
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to assign this process to the selected resource?"
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+       this.createQueueItem(localStorage.getItem('resourceName'),localStorage.getItem('processName'));
+      }
+      this.dialogRef = null;
+    });
+  }
 
     createQueueItem(resourceName:string, processName:string ) {
       this.controlRoomService.createQueueItem(resourceName,processName);

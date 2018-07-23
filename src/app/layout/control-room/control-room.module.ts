@@ -27,6 +27,8 @@ MatSortModule,
 MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { ConfirmationDialog } from './confirmation-dialog.component';
 
 @NgModule({
     imports: [CommonModule,ControlRoomRoutingModule,
@@ -34,6 +36,7 @@ import { MatPaginatorModule } from '@angular/material';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
+    MatDialogModule,
     MatPaginatorModule,
     MatToolbarModule,
     MatFormFieldModule,
@@ -50,9 +53,10 @@ import { MatPaginatorModule } from '@angular/material';
     ConfirmDialogModule,
     TreeModule,
     CarouselModule,
-     DataTableModule.forRoot(),
-     PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
-    declarations: [ControlRoomComponent],
-    exports: [MatButtonModule, MatCheckboxModule]
+    DataTableModule.forRoot(),
+    PaginatorModule,DragDropModule,LayoutModule, TabViewModule],
+    declarations: [ControlRoomComponent,ConfirmationDialog],
+    exports: [MatButtonModule, MatCheckboxModule],
+    entryComponents: [ConfirmationDialog]
 })
 export class ControlRoomModule {}

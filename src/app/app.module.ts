@@ -53,6 +53,8 @@ MatInputModule,
 MatCheckboxModule} from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import { MatDialogModule } from '@angular/material';
+
 export function createTranslateLoader(http: HttpClient) {
     // for development
     // return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
@@ -75,6 +77,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatIconModule,
         MatToolbarModule,
         MatButtonModule,
+        MatDialogModule,
         MatSelectModule,
         MatSortModule,
         MatTableModule,
