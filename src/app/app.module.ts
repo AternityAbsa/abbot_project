@@ -56,6 +56,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { MatDialogModule } from '@angular/material';
 import { AlertComponent } from './_directives/index';
 import { AlertService } from './_services/index';
+import {OrderListModule} from 'primeng/orderlist';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -84,6 +85,7 @@ export function createTranslateLoader(http: HttpClient) {
         MatSelectModule,
         MatSortModule,
         MatTableModule,
+        OrderListModule,
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,

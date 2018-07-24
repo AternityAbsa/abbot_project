@@ -29,6 +29,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { MatPaginatorModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { ConfirmationDialog } from './confirmation-dialog.component';
+import {OrderListModule} from 'primeng/orderlist';
 
 @NgModule({
     imports: [CommonModule,ControlRoomRoutingModule,
@@ -48,6 +49,7 @@ import { ConfirmationDialog } from './confirmation-dialog.component';
     MatStepperModule,
     MatButtonModule,
     MatCheckboxModule,
+    OrderListModule,
     ScrollPanelModule,
     PageHeaderModule,
     ConfirmDialogModule,

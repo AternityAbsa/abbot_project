@@ -68,7 +68,7 @@ export class ControlRoomComponent implements OnInit{
     color:string = 'red';
     path:any = "src/assets/logo.png";
     index: number = 0;
-
+    selectedQueue:string;
     openNext() {
         this.index = (this.index === 2) ? 0 : this.index + 1;
     }
@@ -157,4 +157,8 @@ export class ControlRoomComponent implements OnInit{
 //    success(message: string) {
 //       this.alertService.success(message);
 //   }
+
+    selectQueue(selectedQueue:string){
+     this.selectedQueue=selectedQueue;
+    }
 }
