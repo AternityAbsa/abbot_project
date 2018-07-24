@@ -31,8 +31,7 @@ export class ControlRoomService {
       }
 
    createQueueItem(resourceName: string, processName:string){
-      let param:string =resourceName + ',' + processName;
-       return this.http.post("http://localhost:8080/abbot/abbot-work-queue-item-management/assigned/" + resourceName +'/'+ resourceName , {headers: this.headers})
+       return this.http.post("http://localhost:8080/abbot/abbot-work-queue-item-management/assigned/" + resourceName +'/'+ processName , {headers: this.headers})
            .subscribe(
             res => {
               console.log(res);
@@ -66,6 +65,19 @@ export class ControlRoomService {
 
   public getAllQueueItems(): Observable<any[]>{
         return this.http.get("http://localhost:8080/abbot/abbot-work-queue-item-management",{headers: this.headers})
+        .map((response: Response) => {
+            if (response.status === 204) {
+                return undefined;
+            } else if (response.status === 500) {
+                return null;
+            }else {
+                return response.json();
+            }
+        });
+     }
+
+  public getAllQueues(): Observable<any[]>{
+        return this.http.get("http://localhost:8080/abbot/abbot-work-queue-management",{headers: this.headers})
         .map((response: Response) => {
             if (response.status === 204) {
                 return undefined;

@@ -55,6 +55,8 @@ import { MatFormFieldModule } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import { MatDialogModule } from '@angular/material';
 import { AlertComponent } from './_directives/index';
+import { AlertService } from './_services/index';
+
 
 export function createTranslateLoader(http: HttpClient) {
     // for development
@@ -118,7 +120,8 @@ export function createTranslateLoader(http: HttpClient) {
                 AbbotProcessStep,
                 AbbotWorkQueueItem,
                 AbbotUser,
-                AbbotAction],
+                AbbotAction,
+                AlertService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

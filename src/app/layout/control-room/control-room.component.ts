@@ -7,16 +7,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from '../../layout/layout.component';
 import { routerTransition } from './../../router.animations';
 import { TreeNode } from 'primeng/primeng';
-import {ConfirmationService} from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 import { Subject } from 'rxjs/Subject';
-import {FormGroup} from '@angular/forms';
-import {AbbotResource} from '../../models/AbbotResource';
-import {AbbotProcess} from '../../models/AbbotProcess';
-import {AbbotWorkQueueItem} from '../../models/AbbotWorkQueueItem';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { FormGroup } from '@angular/forms';
+import { AbbotResource } from '../../models/AbbotResource';
+import { AbbotProcess } from '../../models/AbbotProcess';
+import { AbbotWorkQueueItem } from '../../models/AbbotWorkQueueItem';
+import { MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
 import { ConfirmationDialog } from './confirmation-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+//import { AlertService } from '../../_services/index';
 
 @Component({
   selector: 'app-control-room',
@@ -59,12 +60,22 @@ export class ControlRoomComponent implements OnInit{
     resourceGroups: any[] = [];
     processes: Array<AbbotProcess> = [];
     queueItems: any[]=[];
+    queues: any[]=[];
     files: TreeNode[] = [];
     showConfirm: boolean=false;
     results: Object;
     searchTerm$ = new Subject<string>();
     color:string = 'red';
     path:any = "src/assets/logo.png";
+    index: number = 0;
+
+    openNext() {
+        this.index = (this.index === 2) ? 0 : this.index + 1;
+    }
+
+    openPrev() {
+        this.index = (this.index === 0) ? 2 : this.index - 1;
+    }
 
     constructor(private controlRoomService: ControlRoomService,public dialog: MatDialog,private changeDetectorRefs: ChangeDetectorRef) {
        this.controlRoomService.getAllResourceGroups().subscribe((data: AbbotResourceGroup[])=> {
@@ -80,6 +91,9 @@ export class ControlRoomComponent implements OnInit{
         this.controlRoomService.getAllProcesses().subscribe( (data: Array<AbbotProcess>)=> {
            this.processes=data;
 
+        });
+        this.controlRoomService.getAllQueues().subscribe((data: any[]) => {
+             this.queues.push(data);
         });
     }
 
@@ -113,7 +127,6 @@ export class ControlRoomComponent implements OnInit{
 
     allowDrop(event) {
       event.preventDefault();
-
     }
 
     drop(event:DragEvent, resourceName:string) {
@@ -126,15 +139,14 @@ export class ControlRoomComponent implements OnInit{
       disableClose: false
     });
     this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to assign this process to the selected resource?"
-
     this.dialogRef.afterClosed().subscribe(result => {
       if(result) {
        this.createQueueItem(localStorage.getItem('resourceName'),localStorage.getItem('processName'));
       // this.success('Queue Item has been created sucessfully');
-       this.createTable();
        this.changeDetectorRefs.detectChanges();
+       this.ngOnInit();
        }
-      this.dialogRef = null;
+       this.dialogRef = null;
     });
   }
 
@@ -144,5 +156,5 @@ export class ControlRoomComponent implements OnInit{
 
 //    success(message: string) {
 //       this.alertService.success(message);
-//    }
+//   }
 }

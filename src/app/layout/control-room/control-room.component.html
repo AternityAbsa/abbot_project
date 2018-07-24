@@ -5,91 +5,151 @@
     <router-outlet></router-outlet>
     <app-page-header [heading]="'Control Room'"></app-page-header>
 
+       <p-tabView>
+           <p-tabPanel header="Home">
 
-    <div class="ui-g">
-    </div>
+               <div class="ui-g">
+                   <div class="ui-g-4">
+                        <h4>&nbsp;</h4>
+                        <div class="div1" align="left">
+                            <div align="left">
+                                <br/>&nbsp;&nbsp;&nbsp;Search
+                                <input placeholder="&nbsp;&nbsp;process groups"
+                                       (keyup)="searchTerm$.next($event.target.value)">
 
-    <div class="ui-g">
-        <div class="ui-g-4">
-            <h4>&nbsp;Processes</h4>
-            <div class="div1" align="left">
-                <div align="left">
-                    <br/>&nbsp;&nbsp;&nbsp;Search
-                    <input placeholder="&nbsp;&nbsp;process groups"
-                        (keyup)="searchTerm$.next($event.target.value)">
+                                <hr/>
+                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}">
+                                    <ul >
+                                        <li *ngFor="let process of processes" style="list-style-type: none;">
+                                            <img src="/assets/abbot_process.png"  width="20" height="20"/>&nbsp;
+                                            <a href="#" class="drag1" draggable="true"  (dragstart)="drag($event,process.name)" >
+                                                <span  [ngClass]="color" style="color:green;">{{process.name}}</span>
+                                                <!--<span  *ngIf="!running"  [ngClass]="color" style="color:green;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
+                                                <!--<span  *ngIf="running"  [ngClass]="color" style="color:green;font-weight: bold;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </p-scrollPanel>
 
-                    <hr/>
-                    <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}">
-                        <ul >
-                            <li *ngFor="let process of processes" style="list-style-type: none;">
-                                <img src="/assets/abbot_process.png"  width="20" height="20"/>&nbsp;
-                                <a href="#" class="drag1" draggable="true"  (dragstart)="drag($event,process.processName)" >
-                                    <span  [ngClass]="color" style="color:green;">{{process.name}}</span>
-                                    <!--<span  *ngIf="!running"  [ngClass]="color" style="color:green;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
-                                    <!--<span  *ngIf="running"  [ngClass]="color" style="color:green;font-weight: bold;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
-                                </a>
-                            </li>
-                        </ul>
-                    </p-scrollPanel>
+                            </div>
+                        </div>
+                      <br>
+
+                    </div>
+
+                    <div class="ui-g-3">
+                        <p align="center" style="color:blue;">Drag and Drop</p>
+                    </div>
+                    <div class="ui-g-4">
+                        <h4 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                        <div class="div1" >
+                            <div align="left">
+                                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search
+                                <input  placeholder="&nbsp;&nbsp;resource groups"
+                                        (keyup)="searchTerm$.next($event.target.value)">
+                                <hr/>
+
+                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}" >
+                                    <ul class="list">
+                                        <li align="left"  *ngFor="let resource of resources[0]">
+                                            <div align="left"  id="1" (drop)="drop(event,resource.name)" (dragover)="allowDrop($event)" >&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <img src="/assets/abbot_resource.png" draggable="false"  width="20" height="20">
+                                                &nbsp;<a  onmouseover="this.style.color='red';" onmouseout="this.style.color='black';" href="#">{{resource.name}}</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </p-scrollPanel>
+                            </div>
+                            <hr/>
+
+                        </div>
+                        <br>
+                    </div>
+
+
+               </div>
+               &nbsp;&nbsp;&nbsp;
+               <div class="example-header">
+                   <mat-form-field>
+                       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                   </mat-form-field>
+               </div>
+               <div class="example-container mat-elevation-z8">
+
+                        <mat-table #table [dataSource]="dataSource" matSort>
+                            <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}} </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
+                                <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Pending'" style="color:orange;"> {{element[column.id]}}</span></mat-cell>
+                                <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Completed'" style="color:green;"> {{element[column.id]}}</span></mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+               </div>
+        </p-tabPanel>
+
+
+        <p-tabPanel header="Queue Management">
+                <div class="ui-g">
+                    <div class="ui-g-2">
+                        <h4>&nbsp;</h4>
+                            <div align="left"  style="height:600px;">
+                                <br/>
+
+                                <hr/>
+                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}">
+                                    <ul >
+                                        <li *ngFor="let queue of queues" style="list-style-type: none;">
+                                            <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
+                                            <a href="#" >
+                                                <span  [ngClass]="color" style="color:green;">{{queue.name}}</span>
+                                                <!--<span  *ngIf="!running"  [ngClass]="color" style="color:green;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
+                                                <!--<span  *ngIf="running"  [ngClass]="color" style="color:green;font-weight: bold;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </p-scrollPanel>
+
+                            </div>
+                    </div>
+                    <div class="ui-g-1"></div>
+                    <div class="ui-g-8">
+                        <div class="example-container mat-elevation-z8">
+
+                            <mat-table #table1 [dataSource]="dataSource" matSort>
+                                <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}} </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
+                                    <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Pending'" style="color:orange;"> {{element[column.id]}}</span></mat-cell>
+                                    <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Completed'" style="color:green;"> {{element[column.id]}}</span></mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+                            </mat-table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                        </div>
+                    </div>
+
 
                 </div>
-            </div>
 
-            <br>
+            </p-tabPanel>
 
-        </div>
-
-        <div class="ui-g-3">
-            <p align="center" style="color:blue;">Drag and Drop</p>
-        </div>
-        <div class="ui-g-4">
-            <h4 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources</h4>
-            <div class="div1" >
-                <div align="left">
-                    <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search
-                    <input  placeholder="&nbsp;&nbsp;resource groups"
-                        (keyup)="searchTerm$.next($event.target.value)">
-                    <hr/>
-
-                        <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}" >
-                            <ul class="list">
-                              <li align="left"  *ngFor="let resource of resources[0]">
-                                <div align="left"  id="1" (drop)="drop(event,resource.name)" (dragover)="allowDrop($event)" >&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <img src="/assets/abbot_resource.png" draggable="false"  width="20" height="20">
-                                    &nbsp;<a  onmouseover="this.style.color='red';" onmouseout="this.style.color='black';" href="#">{{resource.name}}</a>
-                                </div>
-                              </li>
-                           </ul>
-                        </p-scrollPanel>
-                </div>
-                <hr/>
-
-            </div>
-            <br>
-        </div>
-
-    </div>
-    &nbsp;&nbsp;&nbsp;
-    <div class="example-header">
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-    </div>
-
-    <div class="example-container mat-elevation-z8">
-
-        <mat-table #table [dataSource]="dataSource" matSort>
-            <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}} </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
-                <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Pending'" style="color:orange;"> {{element[column.id]}}</span></mat-cell>
-                <mat-cell *matCellDef="let element"> <span *ngIf="column.value==='Completed'" style="color:green;"> {{element[column.id]}}</span></mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-        </mat-table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </div>
+    </p-tabView>
 </section>
+
+<!--&lt;!&ndash; main app container &ndash;&gt;-->
+<!--<div class="jumbotron">-->
+    <!--<div class="container">-->
+        <!--<div class="col-sm-8 col-sm-offset-2">-->
+            <!--<alert></alert>-->
+            <!--<router-outlet></router-outlet>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
