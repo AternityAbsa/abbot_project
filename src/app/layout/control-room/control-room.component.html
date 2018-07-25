@@ -18,7 +18,7 @@
                                        (keyup)="searchTerm$.next($event.target.value)">
 
                                 <hr/>  <hr/>
-                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}">
+                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '2px solid grey'}">
                                     <ul >
                                         <li *ngFor="let process of processes" style="list-style-type: none;">
                                             <img src="/assets/abbot_process.png"  width="20" height="20"/>&nbsp;
@@ -49,7 +49,7 @@
                                         (keyup)="searchTerm$.next($event.target.value)">
                                 <hr/>  <hr/>
 
-                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '1px solid red'}" >
+                                <p-scrollPanel [style]="{width: '100%', height: '200px',border: '2px solid grey'}" >
                                     <ul class="list">
                                         <li align="left"  *ngFor="let resource of resources[0]">
                                             <div align="left"  id="1" (drop)="drop(event,resource.name)" (dragover)="allowDrop($event)" >&nbsp;&nbsp;&nbsp;&nbsp;
