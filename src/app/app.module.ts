@@ -45,7 +45,6 @@ MatCardModule,
 MatProgressSpinnerModule,
 MatMenuModule,
 MatIconModule,
-MatToolbarModule,
 MatSelectModule,
 MatSortModule,
 MatTableModule,
@@ -57,6 +56,8 @@ import { MatDialogModule } from '@angular/material';
 import { AlertComponent } from './_directives/index';
 import { AlertService } from './_services/index';
 import {OrderListModule} from 'primeng/orderlist';
+import { MaterialModule } from './material.module';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -79,9 +80,9 @@ export function createTranslateLoader(http: HttpClient) {
         MatProgressSpinnerModule,
         MatMenuModule,
         MatIconModule,
-        MatToolbarModule,
         MatButtonModule,
         MatDialogModule,
+        MatToolbarModule,
         MatSelectModule,
         MatSortModule,
         MatTableModule,

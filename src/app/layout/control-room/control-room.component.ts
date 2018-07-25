@@ -18,6 +18,7 @@ import { DataSource } from '@angular/cdk/table';
 import { ConfirmationDialog } from './confirmation-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 //import { AlertService } from '../../_services/index';
+import 'hammerjs';
 
 @Component({
   selector: 'app-control-room',

@@ -20,7 +20,6 @@ MatCardModule,
 MatProgressSpinnerModule,
 MatMenuModule,
 MatIconModule,
-MatToolbarModule,
 MatInputModule,
 MatSelectModule,
 MatSortModule,
@@ -30,6 +29,8 @@ import { MatPaginatorModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { ConfirmationDialog } from './confirmation-dialog.component';
 import {OrderListModule} from 'primeng/orderlist';
+import { MaterialModule } from '../../material.module';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
     imports: [CommonModule,ControlRoomRoutingModule,
@@ -39,9 +40,10 @@ import {OrderListModule} from 'primeng/orderlist';
     MatIconModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
+    MaterialModule,
+    MatToolbarModule,
     MatSortModule,
     MatTableModule,
     CdkTableModule,

@@ -100,112 +100,14 @@
                             <div align="left"  style="width:300px;height:400px;">
 
                                     <br/> <div align="center"> Abbot Work Queues  </div> <hr/>
-                                    <p-orderList [value]="cars">
-                                        <ng-template let-car pTemplate="item">
-                                            <div class="ui-helper-clearfix">
-                                                 <ul style="list-style-type:none;">
-                                                    <li *ngFor="let queue of queues" style="list-style-type: none;">
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_1)" >
-                                                            <span  [ngClass]="color" style="color:green;">{{queue.name}}</span>
-                                                            <!--<span  *ngIf="!running"  [ngClass]="color" style="color:green;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
-                                                            <!--<span  *ngIf="running"  [ngClass]="color" style="color:green;font-weight: bold;">DUMMY_ABBOT_PROCESS_UAT_TEST</span>-->
-                                                        </a>
-                                                    </li>
-                                                    <li style="list-style-type: none;">
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_1)" >
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_1</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_2)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_2</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_3)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_3</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_4)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_4</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_5)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_5</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_6)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_6</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_7)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_7</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_8)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_8</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_9)">
-                                                            <span  [ngClass]="color" style="color:green;">TEST_ABBOT_QUEUE_9</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_10)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_10</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_11)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_11</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_12)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_12</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a  (click)="selectQueue(TEST_ABBOT_QUEUE_13)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_13</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a  (click)="selectQueue(TEST_ABBOT_QUEUE_14)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_14</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <img src="/assets/abbot_queue.png"  width="20" height="20"/>&nbsp;
-                                                        <a href="#" (click)="selectQueue(TEST_ABBOT_QUEUE_15)">
-                                                            <span  [ngClass]="color" style="color:green;padding-right:50px;">TEST_ABBOT_QUEUE_15</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </ng-template>
-                                    </p-orderList>
+                                <p-orderList [value]="queues">
+                                    <ng-template let-q pTemplate="item">
+                                        <div class="ui-helper-clearfix">
+                                            <img src="assets/showcase/images/abbot_queue.png" style="display:inline-block;margin:2px 0 2px 2px" width="48">
+                                            <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{q.name}}</div>
+                                        </div>
+                                    </ng-template>
+                                </p-orderList>
                             </div>
                     </div>
                     <div class="ui-g-1"></div>
